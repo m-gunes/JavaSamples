@@ -27,11 +27,11 @@ public class NumericLottery {
                 repeat = false;
                 a[i] = random.nextInt(1, 50);
 
-                for(int k = 0; k < i; ++k)
-                    if(a[k] == a[i]) {
-                        repeat = true;
-                        break;
-                    }
+                if(!numTable[a[i]])
+                    numTable[a[i]] = true;
+                else
+                    repeat = true;
+
             } while (repeat);
 
         }
