@@ -12,11 +12,6 @@ public class ArrayUtil {
 
     public static void main(String[] args) {
 
-        int [] a = {1,4,5,6,2};
-        int b = max(a);
-        int c = min(a);
-        System.out.println(b);
-        System.out.println(c);
     }
     public static int [] generateRandomArray(Random random, int count, int origin, int bound)
     {
@@ -36,6 +31,17 @@ public class ArrayUtil {
             a[i] = random.nextDouble(origin, bound);
 
         return a;
+    }
+
+    public static boolean [] generateRandomArray(Random random, int count)
+    {
+       boolean [] a = new boolean[count];
+       for(int i = 0; i < count; ++i)
+           a[i] = random.nextBoolean();
+
+       return a;
+
+
     }
 
     public static void print(int [] a)
@@ -86,8 +92,9 @@ public class ArrayUtil {
     public static int max(int [] a) {
         int max = a[0];
         for(int i = 1; i < a.length; ++i)
-            if(max < a[i])
-                max = a[i];
+            max = Math.max(max, a[i]);
+//            if(max < a[i])
+//                max = a[i];
         return max;
     }
     public static int min(int [] a) {
