@@ -1,5 +1,7 @@
 package org.csystem.app.lottery.numeric;
 
+import org.csystem.util.array.ArrayUtil;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,16 +10,20 @@ import static org.csystem.util.array.ArrayUtil.print;
 public class NumericLotteryApp {
     public static void run()
     {
-        Random random = new Random();
-        NumericLottery lottery = new NumericLottery(random);
         Scanner kb = new Scanner(System.in);
-        System.out.print("How many coupon would you like to play?");
-        int count = kb.nextInt();
+        NumericLottery numericLottery = new NumericLottery(new Random());
 
-        while (count > 0) {
-            int [] a = lottery.getNumbers();
-            print(a, 2);
-            --count;
+        while (true) {
+            System.out.print("How many coupon would you like to play?");
+            int n = kb.nextInt();
+
+            if(n <= 0) {
+                System.out.println("Please, input positive number!");
+                continue;
+            }
+
+            while (n-- > 0)
+                ArrayUtil.print(numericLottery.getNumbers(), 2);
         }
     }
 

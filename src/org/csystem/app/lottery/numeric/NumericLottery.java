@@ -20,24 +20,46 @@ public class NumericLottery {
     public int [] getNumbers()
     {
         int [] a = new int[6];
-        boolean [] numTable = new boolean[50];
+        boolean [] lotteryTable = new boolean[50];
+
         for(int i = 0; i < a.length; ++i) {
             boolean repeat;
             do {
                 repeat = false;
                 a[i] = random.nextInt(1, 50);
 
-                if(!numTable[a[i]])
-                    numTable[a[i]] = true;
+                if(!lotteryTable[a[i]])
+                    lotteryTable[a[i]] = true;
                 else
                     repeat = true;
 
             } while (repeat);
-
         }
 
         Arrays.sort(a);
         return a;
     }
 
+
+    // Not: Aşağıdaki yaklaşım çok iyi değildir
+    public int [] getNumbers2()
+    {
+        int [] a = new int[6];
+        for(int i = 0; i < 6; ++i){
+            boolean repeat;
+            do {
+                repeat = false;
+                a[i] = random.nextInt(1, 50);
+                for(int k = 0; k < i; ++k) {
+                    if(a[k] == a[i]){
+                       repeat = true;
+                       break;
+                    }
+                }
+            } while (repeat);
+        }
+
+        Arrays.sort(a);
+        return a;
+    }
 }

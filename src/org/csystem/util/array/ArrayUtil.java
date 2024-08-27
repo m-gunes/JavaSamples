@@ -49,6 +49,14 @@ public class ArrayUtil {
         print(a, ' ', '\n');
     }
 
+    public static void print(boolean [] a)
+    {
+        for(int i = 0; i < a.length; ++i) {
+            System.out.printf("%d: %b%c", i, a[i], ' ');
+        }
+        System.out.println();
+    }
+
     public static void print(int [] a, char sep, char end)
     {
         print(a, 1, sep, end);
