@@ -10,8 +10,45 @@ import java.util.Random;
 
 public class ArrayUtil {
 
-    public static void main(String[] args) {
 
+    public static void swap(int [] a, int i, int k)
+    {
+        int temp = a[i];
+        a[i] = a[k];
+        a[k] = temp;
+    }
+    public static void bubbleSortAscending(int [] a)
+    {
+        for(int i = 0; i < a.length - 1; ++i)
+            for(int k = 0; k < a.length - 1 - i; ++k)
+                if(a[k] > a[k + 1])
+                    swap(a, k, k+1);
+
+//            for(int k = 1; k < a.length - i; ++k)
+//                if(a[k-1] > a[k])
+//                    swap(a, k, k-1);
+
+    }
+
+    public static void bubbleSortDescending(int [] a)
+    {
+        for(int i = 0; i < a.length - 1; ++i)
+            for(int k = 0; k < a.length - 1 - i; ++k)
+                if(a[k] < a[k + 1])
+                    swap(a, k, k+1);
+    }
+
+    public static void bubbleSort(int [] a)
+    {
+        bubbleSort(a, false);
+    }
+
+    public static void bubbleSort(int [] a, boolean descending)
+    {
+        if(descending)
+            bubbleSortDescending(a);
+        else
+            bubbleSortAscending(a);
     }
     public static int [] generateRandomArray(Random random, int count, int origin, int bound)
     {
