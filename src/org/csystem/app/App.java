@@ -8,8 +8,21 @@ import java.util.Scanner;
 class App {
     public static void main(String[] args) {
 
+
     }
 }
+/*
+
+ Ascending order -> kucukten buyuge, artan, dogal siralama (natural sort order)
+
+Bubble sort:
+iki'serli karsilastirilip buyuk olan en sona cekiliyor (ascending order)
+
+Selection sort:
+dizinin en kucuk/buyuk elemani bulunup en basa cekiliyor
+
+
+* */
 
 
 //public class Sample { // ayni derleme biriminde oldugu icin bunu daha onemli olarak yorumluyor.
