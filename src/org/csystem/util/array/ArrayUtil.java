@@ -10,6 +10,44 @@ import java.util.Random;
 
 public class ArrayUtil {
 
+    public static void selectionSortAscending(int [] a)
+    {
+        for(int i = 0; i < a.length - 1; ++i) {
+           int min = i;
+
+           for(int k = i + 1; k < a.length; ++k)
+               if(a[k] < a[min])
+                   min = k;
+
+           if(i != min)
+               swap(a, i, min);
+        }
+    }
+    public static void selectionSortDescending(int [] a)
+    {
+        for(int i = 0; i < a.length - 1; ++i) {
+            int max = i;
+
+            for(int k = i + 1; k < a.length; ++k)
+                if(a[k] > a[max])
+                    max = k;
+
+            if(i != max)
+                swap(a, i, max);
+        }
+    }
+    public static void selectionSort(int [] a)
+    {
+        selectionSort(a, false);
+    }
+    public static void selectionSort(int [] a, boolean descending)
+    {
+        if(descending)
+            selectionSortDescending(a);
+        else
+            selectionSortAscending(a);
+    }
+
 
     public static void swap(int [] a, int i, int k)
     {
