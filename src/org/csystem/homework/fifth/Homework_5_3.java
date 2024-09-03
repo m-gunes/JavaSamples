@@ -4,7 +4,6 @@ package org.csystem.homework.fifth;
 	Homework-005-3.sorunun çözümü
 -----------------------------------------------------------------------------------------------------------------------*/
 
-
 public class Homework_5_3 {
     public static void main(String[] args)
     {
@@ -25,16 +24,16 @@ public class Homework_5_3 {
         }
     }
 
-    public static void run()
+    public static void areFriendsTest()
     {
         java.util.Scanner kb = new java.util.Scanner(System.in);
-        System.out.print("Bir sayi giriniz:"); // 5020, 2924
+        System.out.print("Bir sayi giriniz:"); // 1210, 5020, 2924
         int x = Integer.parseInt(kb.nextLine());
 
-        System.out.print("Bir baska sayi giriniz:"); // 5564, 2620
+        System.out.print("Bir baska sayi giriniz:"); // 1184, 5564, 2620
         int y = Integer.parseInt(kb.nextLine());
 
-        System.out.printf("%d ve %d sayıları arkadaş sayı%s%n", x, y, areFriends(x, y) ? "dır." : " değildir");
+        System.out.printf("%d ve %d sayıları arkadaş %s.", x, y, areFriends(x, y) ? "sayıdır" : "sayı değildir");
     }
 
     public static boolean areFriends(int x, int y)
