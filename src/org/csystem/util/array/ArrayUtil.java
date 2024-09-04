@@ -119,6 +119,23 @@ public class ArrayUtil {
 
     }
 
+    public static int partition(int [] a, int threshold)
+    {
+        int patitionPoint = 0; //  ilk koşula uymayan elemanın bulunduğu indeks değerine denir
+
+        while(patitionPoint != a.length && a[patitionPoint] < threshold)
+            ++patitionPoint;
+
+        if(patitionPoint == a.length)
+            return patitionPoint;
+
+        for(int i = patitionPoint + 1; i < a.length; ++i)
+            if(a[i] < threshold)
+                swap(a, i, patitionPoint++);
+
+        return patitionPoint;
+    }
+
     public static void print(int [] a)
     {
         print(a, ' ', '\n');
