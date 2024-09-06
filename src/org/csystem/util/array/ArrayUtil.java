@@ -115,11 +115,19 @@ public class ArrayUtil {
            a[i] = random.nextBoolean();
 
        return a;
-
-
     }
 
-    public static int partition(int [] a, int threshold)
+    public static int [] histogramData(int [] a, int n) // don't forget
+    {
+        int [] data = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++data[a[i]]; // a[i] index icerisindeki sayi data[] icerisindeki index'e karsilik geliyor ve her seferinde 1 artiriyoruz.
+
+        return data;
+    }
+
+    public static int partition(int [] a, int threshold) // don't forget
     {
         int patitionPoint = 0; //  ilk koşula uymayan elemanın bulunduğu indeks değerine denir
 
