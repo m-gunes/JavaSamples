@@ -6,6 +6,13 @@ import java.util.Scanner;
 import static org.csystem.util.array.ArrayUtil.print;
 import static org.csystem.util.numeric.NumberUtil.*;
 
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması:
+        Parametresi ile aldığı long türden bir sayının basamaklarından oluşan diziye geri dönen getDigits isimli
+        metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+        Açıklama: Metot negatif bir argüman için basamak değerlerini pozitif olarak verecektir
+-----------------------------------------------------------------------------------------------------------------------*/
+
 public class NumberUtilGetDigitsTest {
     public static void main(String[] args)
     {
