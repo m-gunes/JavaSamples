@@ -19,13 +19,18 @@ public class Homework_10_3 {
         // bir dizideki elemanlardan digerinde var mi diye bakicaksin.
         Scanner kb = new Scanner(System.in);
 
-        System.out.print("Bir sayi giriniz: ");
-        int a = kb.nextInt();
+        while (true) {
+            System.out.print("Bir sayi giriniz: ");
+            int a = kb.nextInt();
 
-        System.out.print("Bir sayi giriniz: ");
-        int b = kb.nextInt();
+            if(a <= 0)
+                break;
 
-        System.out.printf("%d sayisindan %d sayisi elde %s", a, b, NumberUtil.isPossible(a, b) ? "edilebilir" : "edilemez");
+            System.out.print("Baska bir sayi giriniz: ");
+            int b = kb.nextInt();
+
+            System.out.printf("%d sayisindan %d sayisi elde %s%n", a, b, NumberUtil.isPossible(a, b) ? "edilebilir" : "edilemez");
+        }
     }
 }
 
