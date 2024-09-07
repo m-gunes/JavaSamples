@@ -7,22 +7,10 @@ import java.util.Scanner;
 
 class App {
     public static void main(String[] args) {
-        String s = Util.changeCase("MustAfa");
-        System.out.print(s);
+
     }
 }
 
-class Util {
-    public static String changeCase(String s)
-    {
-        char[] c = s.toCharArray();
-
-        for(int i = 0; i < c.length; ++i)
-            c[i] = Character.isLowerCase(c[i]) ? Character.toUpperCase(c[i]) : Character.toLowerCase(c[i]);
-
-        return String.valueOf(c);
-    }
-}
 /*
 
  Ascending order -> kucukten buyuge, artan, dogal siralama (natural sort order)

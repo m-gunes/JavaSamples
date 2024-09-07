@@ -125,6 +125,7 @@ public class StringUtil {
 
     public static char [] reverseToCharArr(String s)
     {
+        // StringBuilder da iceride char turden dizi kullaniyor. Etkinlik olarak yukaridaki reverse metodu ile ayni fakat o daha kisa.
         char [] c = s.toCharArray();
         for(int i = 0; i < c.length / 2; ++i) {
             char temp = c[i];
