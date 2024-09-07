@@ -7,7 +7,44 @@ import java.util.Scanner;
 
 class App {
     public static void main(String[] args) {
+        refArrWithObject();
+    }
 
+    public static void refArrWithObject()
+    {
+        Sample2 [] refList;
+        refList = new Sample2[10];
+
+        for(int i = 0; i < 10; ++i)
+            refList[i] = new Sample2(i);
+
+        System.out.println("Printing...");
+
+        for(int i = 0; i < 10; ++i)
+            System.out.printf("%d", refList[i].x);
+
+    }
+    public static void refArr()
+    {
+        Sample2 [] refList;
+        refList = new Sample2[10];
+
+        for(int i = 0; i < 10; ++i)
+           refList[i].x = i;
+
+        System.out.println("Printing...");
+
+        for(int i = 0; i < 10; ++i)
+            System.out.printf("%d", refList[i].x);
+
+    }
+}
+
+class Sample2 {
+    public int x;
+    public Sample2(int a)
+    {
+        x = a;
     }
 }
 

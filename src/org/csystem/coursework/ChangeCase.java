@@ -35,6 +35,9 @@ class ChangeCaseTest {
 class Util {
     public static String changeCase(String s)
     {
+        // StringBuilder() den daha mi effective? Hayir. Hiz farki yok.
+        // toCharArray() yerine StringBuilder kullanilarakta yapilabilirdi. Ex: string -> StringUtil -> changeCase
+        // ama bu durumda StringBuilder ile yapmak daha iyi olabilir. Her hangi bir hiz farki yok.
         char [] c = s.toCharArray();
 
         for(int i = 0; i < c.length; ++i)
