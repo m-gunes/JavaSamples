@@ -7,7 +7,10 @@ import java.util.Scanner;
 
 class App {
     public static void main(String[] args) {
-        refArrWithObject();
+//        refArrWithObject();
+        String [] cities = {"ankara", "istanbul", "izmir", "mugla", "aksaray"};
+        for(int i = 0; i < cities.length; ++i)
+            System.out.printf("%s ", cities[i].toUpperCase());
     }
 
     public static void refArrWithObject()

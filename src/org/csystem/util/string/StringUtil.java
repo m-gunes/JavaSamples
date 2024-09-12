@@ -5,7 +5,10 @@
  */
 package org.csystem.util.string;
 
+import java.util.Random;
+
 public class StringUtil {
+
     public static String capitalize(String s)
     {
         return s.isEmpty() ? s : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -33,6 +36,42 @@ public class StringUtil {
             ;
 
         return count;
+    }
+
+
+    public static String generateRandomText(Random r, int count, String sourceText)
+    {
+        char [] c = new char[count];
+
+        for(int i = 0; i < count; ++i)
+            c[i] = sourceText.charAt(r.nextInt(sourceText.length()));
+
+        return String.valueOf(c);
+    }
+    public static String generateRandomTextEN(Random r, int count)
+    {
+        return generateRandomText(r, count, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+    }
+    public static String generateRandomTextTR(Random r, int count)
+    {
+        return generateRandomText(r, count, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
+    }
+
+    public static String [] generateRandomTexts(Random r, int count, int origin, int bound, String sourceText)
+    {
+        String [] s = new String[count];
+        for(int i = 0; i < count; ++i)
+            s[i] = generateRandomText(r, r.nextInt(origin, bound), sourceText);
+
+        return s;
+    }
+    public static String [] generateRandomTextsEN(Random r, int count, int origin, int bound)
+    {
+        return generateRandomTexts(r, count, origin, bound, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+    }
+    public static String [] generateRandomTextsTR(Random r, int count, int origin, int bound)
+    {
+        return generateRandomTexts(r, count, origin, bound, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
     }
 
 
@@ -93,6 +132,20 @@ public class StringUtil {
         return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
     }
 
+    public static String join(String [] s, String delimiter)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < s.length; ++i)
+            sb.append(s[i]).append(delimiter); // sb.append(s[i] + delimiter)  her seferinde yeni bir String nesnesi yaratır
+
+        return sb.substring(0, sb.length() - delimiter.length());
+    }
+
+    public static String join(String [] s, char delimiter)
+    {
+        return join(s, String.valueOf(delimiter));
+    }
 
     public static String padLeading(String s, int n, char ch)
     {

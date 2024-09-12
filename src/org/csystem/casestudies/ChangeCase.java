@@ -1,4 +1,4 @@
-package org.csystem.coursework;
+package org.csystem.casestudies;
 
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması:
@@ -6,8 +6,6 @@ package org.csystem.coursework;
 	    Util isimli bir sınıf içerisinde yazınız. Util sınıfını, test kodlarını ve entry point'i içeren sınıfı
 	    tek bir derleme biriminde yazabilirsiniz
 -----------------------------------------------------------------------------------------------------------------------*/
-
-import org.csystem.util.string.StringUtil;
 
 public class ChangeCase {
     public static void main(String[] args)
