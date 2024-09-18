@@ -1,8 +1,3 @@
-/**
- * Utility class for string operations
- * Last Update: 8th August 2024
- * @author Java-Jan-2024 Group
- */
 package org.csystem.util.string;
 
 import java.util.Random;
@@ -41,35 +36,39 @@ public class StringUtil {
 
     public static String generateRandomText(Random r, int count, String sourceText)
     {
-        char [] c = new char[count];
+        char[] c = new char[count];
 
-        for(int i = 0; i < count; ++i)
+        for (int i = 0; i < count; ++i)
             c[i] = sourceText.charAt(r.nextInt(sourceText.length()));
 
         return String.valueOf(c);
     }
+
     public static String generateRandomTextEN(Random r, int count)
     {
         return generateRandomText(r, count, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
     }
+
     public static String generateRandomTextTR(Random r, int count)
     {
         return generateRandomText(r, count, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
     }
 
-    public static String [] generateRandomTexts(Random r, int count, int origin, int bound, String sourceText)
+    public static String[] generateRandomTexts(Random r, int count, int origin, int bound, String sourceText)
     {
-        String [] s = new String[count];
-        for(int i = 0; i < count; ++i)
+        String[] s = new String[count];
+        for (int i = 0; i < count; ++i)
             s[i] = generateRandomText(r, r.nextInt(origin, bound), sourceText);
 
         return s;
     }
-    public static String [] generateRandomTextsEN(Random r, int count, int origin, int bound)
+
+    public static String[] generateRandomTextsEN(Random r, int count, int origin, int bound)
     {
         return generateRandomTexts(r, count, origin, bound, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
     }
-    public static String [] generateRandomTextsTR(Random r, int count, int origin, int bound)
+
+    public static String[] generateRandomTextsTR(Random r, int count, int origin, int bound)
     {
         return generateRandomTexts(r, count, origin, bound, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
     }
@@ -132,17 +131,17 @@ public class StringUtil {
         return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
     }
 
-    public static String join(String [] s, String delimiter)
+    public static String join(String[] s, String delimiter)
     {
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < s.length; ++i)
+        for (int i = 0; i < s.length; ++i)
             sb.append(s[i]).append(delimiter); // sb.append(s[i] + delimiter)  her seferinde yeni bir String nesnesi yaratır
 
         return sb.substring(0, sb.length() - delimiter.length());
     }
 
-    public static String join(String [] s, char delimiter)
+    public static String join(String[] s, char delimiter)
     {
         return join(s, String.valueOf(delimiter));
     }
@@ -176,15 +175,38 @@ public class StringUtil {
         return new StringBuilder(s).reverse().toString();
     }
 
-    public static char [] reverseToCharArr(String s)
+    public static char[] reverseToCharArr(String s)
     {
         // StringBuilder da iceride char turden dizi kullaniyor. Etkinlik olarak yukaridaki reverse metodu ile ayni fakat o daha kisa.
-        char [] c = s.toCharArray();
-        for(int i = 0; i < c.length / 2; ++i) {
+        char[] c = s.toCharArray();
+        for (int i = 0; i < c.length / 2; ++i) {
             char temp = c[i];
             c[i] = c[c.length - 1 - i];
             c[c.length - 1 - i] = temp;
         }
         return c;
+    }
+
+    public static String[] split(String s, String delimiter)
+    {
+        return split(s, delimiter, true);
+    }
+
+    public static String [] split(String s, String delimiter, boolean removeEmptyEntries)
+    {
+        StringBuilder pattern = new StringBuilder("[");
+        for(int i = 0; i < delimiter.length(); ++i) {
+            char c = delimiter.charAt(i);
+            if(c == '[' || c == ']')
+                pattern.append('\\');
+
+            pattern.append(c);
+        }
+        pattern.append(']');
+
+        if(removeEmptyEntries)
+            pattern.append("+");
+
+        return s.split(pattern.toString());
     }
 }
