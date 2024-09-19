@@ -135,8 +135,8 @@ public class StringUtil {
     {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < s.length; ++i)
-            sb.append(s[i]).append(delimiter); // sb.append(s[i] + delimiter)  her seferinde yeni bir String nesnesi yaratır
+        for(String str : s)
+            sb.append(str).append(delimiter); // sb.append(s[i] + delimiter)  her seferinde yeni bir String nesnesi yaratır
 
         return sb.substring(0, sb.length() - delimiter.length());
     }
