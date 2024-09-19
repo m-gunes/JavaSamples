@@ -121,8 +121,11 @@ public class ArrayUtil {
     {
         int [] data = new int[n + 1];
 
-        for (int i = 0; i < a.length; ++i)
-            ++data[a[i]]; // a[i] index icerisindeki sayi data[] icerisindeki index'e karsilik geliyor ve her seferinde 1 artiriyoruz.
+        for(int val : a)
+            ++data[val];
+
+        // for (int i = 0; i < a.length; ++i)
+        //     ++data[a[i]]; // a[i] index icerisindeki sayi data[] icerisindeki index'e karsilik geliyor ve her seferinde 1 artiriyoruz.
 
         return data;
     }
@@ -188,8 +191,8 @@ public class ArrayUtil {
     {
         String fmt = String.format("%%0%dd%c", n, sep);
 
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf(fmt, a[i], sep);
+        for(int val : a)
+            System.out.printf(fmt, val, sep);
 
         System.out.print(end);
     }
@@ -201,16 +204,17 @@ public class ArrayUtil {
 
     public static void print(double [] a, char sep, char end)
     {
-        for (int i = 0; i < a.length; ++i)
-            System.out.printf("%f%c", a[i], sep);
+        for(double val : a)
+            System.out.printf("%f%c", val, sep);
 
         System.out.print(end);
     }
 
     public static int sum(int [] list) {
         int total = 0;
-        for(int i = 0; i < list.length; ++i)
-            total += list[i];
+        for(int val : list)
+            total += val;
+
         return total;
     }
 
