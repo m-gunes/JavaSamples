@@ -10,8 +10,7 @@ public class MatrixUtil {
         int [][] a = new int[m][];
 
         for(int i = 0; i < m; ++i) {
-            for(int j = 0; j < n; ++j)
-                a[i] = ArrayUtil.generateRandomArray(random, n, origin, bound);
+            a[i] = ArrayUtil.generateRandomArray(random, n, origin, bound);
         }
 
         return a;
@@ -24,8 +23,8 @@ public class MatrixUtil {
 
     public static boolean isMatrix(int [][] a)
     {
-        for(int i = 0; i < a.length - 1; ++i)
-            if(a[i].length != a[i+1].length)
+        for(int i = 1; i < a.length; ++i)
+            if(a[i].length != a[0].length)
                 return false;
 
         return true;
@@ -34,5 +33,19 @@ public class MatrixUtil {
     public static boolean isSquareMatrix(int [][] a)
     {
         return isMatrix(a) && a.length == a[0].length;
+    }
+
+    public static void main(String[] args)
+    {
+        int [][] a = {{1,2,3}, {1,2,3}, {1,2,3}};
+    }
+
+    public static long sumDiagonal(int [][] a)
+    {
+        long total = 0;
+        for(int i = 0; i < a.length; ++i)
+            total += a[i][i];
+
+        return total;
     }
 }
