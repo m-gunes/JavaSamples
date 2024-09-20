@@ -210,6 +210,17 @@ public class ArrayUtil {
         System.out.print(end);
     }
 
+    public static void print(int [][] a)
+    {
+        print(a, 1);
+    }
+
+    public static void print(int [][] a, int n)
+    {
+        for (int [] array : a)
+            print(array, n, ' ', '\n');
+    }
+
     public static int sum(int [] list) {
         int total = 0;
         for(int val : list)
