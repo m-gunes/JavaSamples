@@ -22,13 +22,8 @@ public class MatrixUtilGenerateRandomMatrix {
         int [][] a = generateRandomMatrix(random, m, n, 23, 89);
         printMatrix(a);
 
-        System.out.printf("Dizi dizisi bir %s%n", isMatrix(a) ? "Matris'dir." : "Matris degildir.");
-        System.out.printf("Dizi dizisi bir %s%n", isSquareMatrix(a) ? "Kare Matris'dir." : "Kare Matris degildir.");
-
         int [][] b = generateRandomSquareMatrix(random, m, 23, 89);
         printMatrix(b);
-
-        System.out.printf("Dizi dizisi bir %s%n", isSquareMatrix(b) ? "Kare Matris'dir." : "Kare Matris degildir.");
     }
 
     public static void printMatrix(int [][] a)
