@@ -35,9 +35,27 @@ public class MatrixUtil {
         return isMatrix(a) && a.length == a[0].length;
     }
 
-    public static void main(String[] args)
+    public static int max(int [][] a)
     {
-        int [][] a = {{1,2,3}, {1,2,3}, {1,2,3}};
+       return ArrayUtil.max(a);
+    }
+
+    public static int min(int [][] a)
+    {
+        return ArrayUtil.min(a);
+    }
+
+    public static void print(int [][] a, int n)
+    {
+        ArrayUtil.print(a, n);
+    }
+    public static long sum(int [][] a)
+    {
+        long total = 0;
+        for(int [] array : a)
+            total += ArrayUtil.sum(array);
+
+        return total;
     }
 
     public static long sumDiagonal(int [][] a)
