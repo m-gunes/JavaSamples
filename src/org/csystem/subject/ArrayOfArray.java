@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ArrayOfArray {
     public static void main(String[] args)
     {
-        matrixWithForEach();
+        initializationForArrayOfArray();
     }
 
     public static void matrixDefaultLengthForMainArr()
@@ -97,5 +97,15 @@ public class ArrayOfArray {
                 System.out.printf("%02d ", val);
             System.out.println();
         }
+    }
+
+    public static void initializationForArrayOfArray()
+    {
+        // Dizi dizilerine ilk değer içiçe küme parantezleri ile verilebilir
+        int [][] a = {{1,2,3}, {4,5,6}, {7,8,9}};
+        int [][] b = {{1,2,3}, {4,5,6,3}, {7,8,9}};
+        ArrayUtil.print(a);
+        System.out.println("------------------------");
+        ArrayUtil.print(b);
     }
 }
