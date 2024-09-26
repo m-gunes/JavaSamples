@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ArrayOfArray {
     public static void main(String[] args)
     {
-        initializationForArrayOfArray();
+        rectangularPrism();
     }
 
     public static void matrixDefaultLengthForMainArr()
@@ -107,5 +107,30 @@ public class ArrayOfArray {
         ArrayUtil.print(a);
         System.out.println("------------------------");
         ArrayUtil.print(b);
+    }
+
+    public static void rectangularPrism()
+    {
+        int [][][] a = new int[3][4][5];
+        Random r = new Random();
+
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j )
+                for (int k = 0; k < a[i][j].length; ++k)
+                    a[i][j][k] = r.nextInt(100);
+
+        System.out.println("[");
+        for (int [][] arrayOfArray : a) {
+            System.out.println("\t[");
+            for (int [] array : arrayOfArray) {
+                System.out.print("\t\t[");
+                for (int val : array) {
+                    System.out.printf("%d,", val);
+                }
+                System.out.println("]");
+            }
+            System.out.println("\t],");
+        }
+        System.out.println("]");
     }
 }
