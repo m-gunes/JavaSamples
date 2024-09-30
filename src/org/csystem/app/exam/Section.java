@@ -5,34 +5,34 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class Section {
+    public char name;
     public int numberOfStudents;
     public int[] notes;
     public Random random;
 
-    public Section(Random r, int numberOfStudents)
+    public Section(Random r, char sectionName, int studentCount)
     {
         random = r;
-        numberOfStudents = numberOfStudents;
+        name = sectionName;
+        numberOfStudents = studentCount;
     }
 
-    public int[] createNotes()
+    public void createNotes()
     {
-        int [] notes = new int[numberOfStudents];
+        notes = new int[numberOfStudents];
 
         for(int i = 0; i < numberOfStudents; ++i)
             notes[i] = random.nextInt(0, 10);
-
-        return notes;
     }
 
-    public int getPhysicsClassAverage()
+    public double getPhysicsClassAverage()
     {
         int total = 0;
 
         for(int note : notes)
             total += note;
 
-        return total / numberOfStudents;
+        return (double) total / numberOfStudents;
     }
 
     public int [] getNotesHistogramData()
