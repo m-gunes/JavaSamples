@@ -5,16 +5,15 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class Section {
-    public char name;
     public int numberOfStudents;
     public int[] notes;
     public Random random;
 
-    public Section(Random r, char sectionName, int studentCount)
+    public Section(Random r, int studentCount)
     {
         random = r;
-        name = sectionName;
         numberOfStudents = studentCount;
+        createNotes();
     }
 
     public void createNotes()
@@ -25,7 +24,7 @@ public class Section {
             notes[i] = random.nextInt(0, 10);
     }
 
-    public double getPhysicsClassAverage()
+    public double getPhysicsGPA()
     {
         int total = 0;
 

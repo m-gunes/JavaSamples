@@ -9,23 +9,27 @@ public class ExamApp {
         Scanner kb = new Scanner(System.in);
         Random r = new Random();
 
-        System.out.print("Sube sayisini giriniz:");
+        System.out.print("Şube sayısını giriniz:");
         int numberOfSection = Integer.parseInt(kb.nextLine());
-        Section [] sections = new Section[numberOfSection];
+        Section [] school = new Section[numberOfSection];
 
-        int i = 0;
-        while (i < numberOfSection) {
-            System.out.printf("%d. sube icin ogrenci sayisini giriniz:", i+1);
+        for(int i = 0; i < numberOfSection; ++i) {
+            System.out.printf("%d. şube için öğrenci sayısını giriniz:", i+1);
             int numberOfStudent = Integer.parseInt(kb.nextLine());
-            Section section = new Section(r, (char) ('A' + i), numberOfStudent);
-            sections[i] = section;
-            ++i;
+            Section section = new Section(r, numberOfStudent);
+            school[i] = section;
         }
-
         System.out.println();
 
-        for(Section section : sections)
-            SectionHelper.printSection(section);
+        double totalPhysicsGPA= 0.0;
+
+        for(int i = 0; i < school.length; ++i) {
+            SectionHelper.printSection(school[i], i+1);
+            totalPhysicsGPA += school[i].getPhysicsGPA();
+        }
+
+        System.out.printf("Okulun Fizik dersi ortalaması: %.1f%n", totalPhysicsGPA / numberOfSection );
+
     }
 
     public static void main(String[] args)
