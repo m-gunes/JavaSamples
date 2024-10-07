@@ -1,4 +1,4 @@
-package org.csystem.app.exam;
+package org.csystem.app.grades;
 
 import java.util.Random;
 import java.util.Scanner;
