@@ -41,7 +41,6 @@ public class Homework_7_2 {
         };
     }
 
-
     public static void printRandomDate()
     {
 
@@ -57,10 +56,6 @@ public class Homework_7_2 {
 
         int day = r.nextInt(1, boundOfDay + 1);
 
-
-
-        System.out.printf("%d %s %d", day, getMonthName(month), year );
-
-
+        System.out.printf("%d%s %s %d", day, getDaySuffix(day),  getMonthName(month), year );
     }
 }
