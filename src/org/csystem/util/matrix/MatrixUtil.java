@@ -44,17 +44,18 @@ public class MatrixUtil {
     public static int [][] multiply(int [][] a, int [][] b)
     {
         int m = a.length;
-        int n = b[0].length;
-        int [][] c = new int[m][n];
+        int n = a[0].length;
+        int p = b[0].length;
+        int [][] c = new int[m][p]; // c[m x p]
 
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n;  ++j) {
-                for (int k = 0; k < b.length; ++k)
-                    c[i][j] += a[i][k] * b[k][j];
-            }
-        }
+        for (int i = 0; i < m; ++i)
+           for (int j = 0; j < p; ++j)
+               for (int k = 0; k < n; ++k)
+                   c[i][j] += a[i][k] * b[k][j];
+
         return c;
     }
+
 
     public static int[][] subtract(int [][] a, int [][] b)
     {
