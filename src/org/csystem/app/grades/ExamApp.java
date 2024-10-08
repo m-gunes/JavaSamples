@@ -13,20 +13,22 @@ public class ExamApp {
         System.out.print("Şube sayısını giriniz:");
 
         int nClasses = Integer.parseInt(kb.nextLine());
-        Exam Physics = new Exam("Fizik", nClasses);
+        Exam physics = new Exam("Fizik", nClasses);
 
         for (int i = 0; i < nClasses; ++i) {
             System.out.printf("%d. şube için öğrenci sayısını giriniz:", i+1);
             int numberOfStudent = Integer.parseInt(kb.nextLine());
-            Physics.setNumberOfStudent(i, numberOfStudent);
+            physics.setNumberOfStudent(i, numberOfStudent);
         }
 
-        Physics.generateGrades(r);
-        Physics.setAverages();
-        PrintExam(Physics);
+        // Todo: Create Calculate method containing generateGrades and setAverages methods
+        physics.generateGrades(r);
+        physics.setAverages();
+
+        printExam(physics);
     }
 
-    public static void PrintExam(Exam exam)
+    public static void printExam(Exam exam)
     {
         int classesLen = exam.getNumberOfClasses();
 
