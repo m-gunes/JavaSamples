@@ -2,10 +2,6 @@ package org.csystem.homework.eighth;
 
 import java.util.Scanner;
 
-// bu ornek {aslinda {hic zor}} degil
-// Bu ornekten {daha {zor {ornekler de yapacagiz} degil}} mi?
-// Yanlis {bir giris icin hata mesaji yazdirilacak
-
 public class Homework_8_1 {
     private static void run()
     {
@@ -27,3 +23,9 @@ public class Homework_8_1 {
         run();
     }
 }
+
+
+
+// bu ornek {aslinda {hic zor}} degil
+// Bu ornekten {daha {zor {ornekler de yapacagiz} degil}} mi?
+// Yanlis {bir giris icin hata mesaji yazdirilacak
