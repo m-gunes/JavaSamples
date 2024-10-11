@@ -6,7 +6,7 @@ public class Homework_8_3 {
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
-        System.out.print("Bir yazi giriniz:");
+        System.out.print("Input a string with a whitespace character at the beginning and end:");
         String s = kb.nextLine();
         System.out.printf("(%s)", trim(s));
     }

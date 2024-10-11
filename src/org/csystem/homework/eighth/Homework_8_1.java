@@ -6,7 +6,7 @@ public class Homework_8_1 {
     private static void run()
     {
         Scanner kb = new Scanner(System.in);
-        System.out.print("Bir yazı giriniz:");
+        System.out.print("Input a string:");
         String s = kb.nextLine();
         extract(s, '{', '}');
     }

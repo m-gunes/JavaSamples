@@ -6,7 +6,7 @@ public class Homework_8_2 {
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
-        System.out.print("Bir yazi giriniz: ");
+        System.out.print("Input a string: ");
         String s = kb.nextLine();
         printStringIncrementally(s);
     }
