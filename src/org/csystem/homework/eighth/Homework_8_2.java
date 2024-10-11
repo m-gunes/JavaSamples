@@ -8,7 +8,11 @@ public class Homework_8_2 {
         Scanner kb = new Scanner(System.in);
         System.out.print("Bir yazi giriniz: ");
         String s = kb.nextLine();
+        printStringIncrementally(s);
+    }
 
+    public static void printStringIncrementally(String s)
+    {
         for(int i = 1; i <= s.length(); ++i)
             System.out.println(s.substring(0, i));
     }
