@@ -46,25 +46,12 @@ public class ExamSimulationApp {
         System.out.printf("Okul ortalamasi: %f%n", exam.getAverage());
     }
 
-    public static void drawHistogram(int [] data, int n, char ch)
-    {
-        int maxValue = ArrayUtil.max(data);
-
-        for (int grade : data) {
-            int count = (int)Math.floor(grade * n / (double)maxValue);
-
-            while (count-- > 0)
-                System.out.print(ch);
-
-            System.out.println();
-        }
-    }
 
     public static void drawHistogram(Classroom classroom, int maxGrade)
     {
         int [] data = classroom.histogramData(maxGrade);
         ArrayUtil.print(data);
-        drawHistogram(data, 10, '-');
+        ArrayUtil.drawHistogram(data, 10, '-');
     }
 
     public static void drawHistogram(Exam exam)
@@ -78,7 +65,7 @@ public class ExamSimulationApp {
         System.out.printf("%s dersi okul histogrami: ", exam.getLectureName());
         int [] data = exam.getHistogramData();
         ArrayUtil.print(data);
-        drawHistogram(data, 20, '-');
+        ArrayUtil.drawHistogram(data, 20, '-');
     }
 
     public static void run()

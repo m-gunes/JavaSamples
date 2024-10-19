@@ -34,6 +34,20 @@ public class ArrayUtil {
             bubbleSortAscending(a);
     }
 
+    public static void drawHistogram(int [] data, int n, char ch)
+    {
+        int maxValue = ArrayUtil.max(data);
+
+        for (int grade : data) {
+            int count = (int)Math.floor(grade * n / (double)maxValue);
+
+            while (count-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void selectionSortAscending(int [] a)
     {
         // Seçerek sıralama algoritmasında en küçük eleman bulunur, ilk eleman ile değiştirilir. Dizi bir daraltılır, aynı işlem daraltılmış dizi için yapılır.
