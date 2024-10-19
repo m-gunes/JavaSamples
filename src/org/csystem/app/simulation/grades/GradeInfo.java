@@ -32,6 +32,6 @@ public class GradeInfo {
 
     public String toString()
     {
-        return "%s, %d".formatted(m_studentName, m_grade);
+        return "Name: %s Grade: %d, ".formatted(m_studentName, m_grade);
     }
 }

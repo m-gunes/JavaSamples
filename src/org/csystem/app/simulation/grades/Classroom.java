@@ -23,6 +23,16 @@ public class Classroom {
         return m_grades.length;
     }
 
+    public int[] histogramData(int maxGrade)
+    {
+        int [] data = new int[maxGrade + 1];
+
+        for(GradeInfo gradeInfo : m_grades)
+            ++data[gradeInfo.getGrade()];
+
+        return  data;
+    }
+
     public String toString()
     {
         StringBuilder sb = new StringBuilder("[");
