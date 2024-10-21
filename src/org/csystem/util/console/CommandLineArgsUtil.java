@@ -1,6 +1,10 @@
 package org.csystem.util.console;
 
 public class CommandLineArgsUtil {
+    private CommandLineArgsUtil()
+    {
+    }
+
     public static void checkLengthEquals(int len, int argsLen, String message)
     {
         checkLengthEquals(len, argsLen, message, 1);

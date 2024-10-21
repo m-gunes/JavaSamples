@@ -5,6 +5,10 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class MatrixUtil {
+    private MatrixUtil()
+    {
+    }
+
     public static int[][] add(int[][] a, int[][] b)
     {
         int [][] c = new int[a.length][a[0].length];

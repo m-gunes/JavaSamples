@@ -6,6 +6,10 @@
 package org.csystem.util.numeric;
 
 public class NumberUtil {
+    private NumberUtil()
+    {
+    }
+
     public static int countDigits(long a)
     {
         return a != 0 ? (int) Math.log10(Math.abs(a)) + 1 : 1;

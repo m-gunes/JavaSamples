@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayUtil {
+    private ArrayUtil()
+    {
+    }
 
     public static void bubbleSortAscending(int [] a)
     {

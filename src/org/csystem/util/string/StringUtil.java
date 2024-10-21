@@ -3,6 +3,9 @@ package org.csystem.util.string;
 import java.util.Random;
 
 public class StringUtil {
+    private StringUtil()
+    {
+    }
 
     public static String capitalize(String s)
     {
