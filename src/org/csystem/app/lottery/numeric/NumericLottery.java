@@ -10,7 +10,7 @@ Açıklama: Bir sayısal loto kuponu birbirinden farklı 6 tane küçükten büy
 Anahtar Notlar: Arrays sınıfının sort metodu parametresi ile aldığı diziyi (ascending) artan şekilde sıralar
 ----------------------------------------------------------------------------------------------------------------*/
 public class NumericLottery {
-    public Random random;
+    private final Random random;
     public NumericLottery(Random r)
     {
         random = r;
