@@ -19,6 +19,8 @@ Mustafa Ali papila nerede. ff. Ey Edip Adana'da pide ye. Ye Edip Adana'da pide e
 */
 
 public class Homework_8_6 {
+    public static final int MIN_PALINDROME_LEN = 2;
+
     public static void run()
     {
 
@@ -30,8 +32,6 @@ public class Homework_8_6 {
         getAllPalindrome(s);
         System.out.println("---------<");
 
-        System.out.printf("First palindrome: %s%n", getFirstPalindrome(s));
-        System.out.printf("Last palindrome: %s%n", getLastPalindrome(s));
         System.out.printf("First longest palindrome: %s%n", getFirstLongestPalindrome(s));
         System.out.printf("First shortest palindrome: %s%n", getFirstShortestPalindrome(s));
         System.out.printf("Last longest palindrome: %s%n", getLastLongestPalindrome(s));
@@ -42,7 +42,7 @@ public class Homework_8_6 {
     {
         for (int i = 0; i < s.length(); ++i) {
             if(!Character.isLetter(s.charAt(i)))
-                continue; // System.out.println(s.charAt(i));
+                continue;
 
             for (int k = s.length() - 1; k > i; --k)
                 if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(i,k+1))) {
@@ -62,30 +62,32 @@ public class Homework_8_6 {
                 continue;
 
             for (int k = s.length() - 1; k > i; --k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(i,k+1)))
-                    if(s.substring(i, k+1).length() > str.length())
-                        str = s.substring(i, k+1);
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
+                    String text = s.substring(i, k+1);
+                    if(StringUtil.isPalindrome(text) && text.length() > str.length())
+                        str = text;
+                }
         }
         return str;
     }
 
     public static String getFirstShortestPalindrome(String s)
     {
-        int minPalindromeLen = 2;
         String str = "";
         for (int i = 0; i < s.length(); ++i) {
             if(!Character.isLetter(s.charAt(i)))
                 continue;
 
             for (int k = s.length() - 1; k > i; --k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(i,k+1))) {
-                    String palindrome = s.substring(i, k+1);
-                    if(palindrome.length() == minPalindromeLen)
-                        return palindrome;
-                    else if(str.isEmpty())
-                        str = palindrome;
-                    else if(palindrome.length() < str.length())
-                            str = palindrome;
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
+                    String text = s.substring(i, k+1);
+                    if(StringUtil.isPalindrome(text))
+                        if(text.length() == MIN_PALINDROME_LEN)
+                            return text;
+                        else if(str.isEmpty())
+                            str = text;
+                        else if(text.length() < str.length())
+                                str = text;
                 }
         }
         return str;
@@ -100,10 +102,10 @@ public class Homework_8_6 {
                 continue;
 
             for (int k = 0; k < i; ++k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(k,i+1))) {
-                    String palindrome = s.substring(k, i+1);
-                    if(palindrome.length() > str.length())
-                        str = palindrome;
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) { // bu kontrol ile gereksiz substring metodu ile olusacak yeni String nesnesi yaratılmasını önlenmeye calisilmistir.
+                    String text = s.substring(k, i+1);
+                    if(StringUtil.isPalindrome(text) && text.length() > str.length())
+                        str = text;
                 }
         }
         return str;
@@ -112,50 +114,24 @@ public class Homework_8_6 {
     public static String getLastShortestPalindrome(String s)
     {
         String str = "";
-        int minPalindromeLen = 2;
 
         for (int i = s.length() - 1; i > 0; --i) {
             if(!Character.isLetter(s.charAt(i)))
                 continue;
 
             for (int k = 0; k < i; ++k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(k,i+1))) {
-                    String palindrome = s.substring(k, i+1);
-                    if(palindrome.length() == minPalindromeLen)
-                        return palindrome;
-                    else if(str.isEmpty())
-                        str = palindrome;
-                    else if(palindrome.length() < str.length())
-                        str = palindrome;
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
+                    String text = s.substring(k, i+1);
+                    if(StringUtil.isPalindrome(text))
+                        if(text.length() == MIN_PALINDROME_LEN)
+                            return text;
+                        else if(str.isEmpty())
+                            str = text;
+                        else if(text.length() < str.length())
+                            str = text;
                 }
         }
         return str;
-    }
-
-    public static String getFirstPalindrome(String s)
-    {
-        for (int i = 0; i < s.length(); ++i) {
-            if(!Character.isLetter(s.charAt(i)))
-                continue;
-
-            for (int k = s.length() - 1; k > i; --k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(i,k+1)))
-                    return s.substring(i, k+1);
-        }
-        return "";
-    }
-
-    public static String getLastPalindrome(String s)
-    {
-        for (int i = s.length() - 1; i > 0; --i) {
-            if(!Character.isLetter(s.charAt(i)))
-                continue;
-
-            for (int k = 0; k < i; ++k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(k,i+1)))
-                    return s.substring(k, i+1);
-        }
-        return "";
     }
 
     public static void main(String[] args)
