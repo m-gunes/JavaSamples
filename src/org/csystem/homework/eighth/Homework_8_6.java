@@ -1,8 +1,8 @@
 package org.csystem.homework.eighth;
 
-import org.csystem.util.string.StringUtil;
-
 import java.util.Scanner;
+
+import static org.csystem.util.string.StringUtil.isPalindrome;
 
 /*
 Palindrome ornekleri:
@@ -45,7 +45,7 @@ public class Homework_8_6 {
                 continue;
 
             for (int k = s.length() - 1; k > i; --k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && StringUtil.isPalindrome(s.substring(i,k+1))) {
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k)) && isPalindrome(s.substring(i,k+1))) {
                     System.out.println(s.substring(i,k+1)); // System.out.printf("i:%d, k:%d%n", i, k);
                     i = k;
                     break;
@@ -64,7 +64,7 @@ public class Homework_8_6 {
             for (int k = s.length() - 1; k > i; --k)
                 if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
                     String text = s.substring(i, k+1);
-                    if(StringUtil.isPalindrome(text) && text.length() > str.length())
+                    if(isPalindrome(text) && text.length() > str.length())
                         str = text;
                 }
         }
@@ -81,7 +81,7 @@ public class Homework_8_6 {
             for (int k = s.length() - 1; k > i; --k)
                 if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
                     String text = s.substring(i, k+1);
-                    if(StringUtil.isPalindrome(text))
+                    if(isPalindrome(text))
                         if(text.length() == MIN_PALINDROME_LEN)
                             return text;
                         else if(str.isEmpty())
@@ -104,7 +104,7 @@ public class Homework_8_6 {
             for (int k = 0; k < i; ++k)
                 if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) { // bu kontrol ile gereksiz substring metodu ile olusacak yeni String nesnesi yaratılmasını önlenmeye calisilmistir.
                     String text = s.substring(k, i+1);
-                    if(StringUtil.isPalindrome(text) && text.length() > str.length())
+                    if(isPalindrome(text) && text.length() > str.length())
                         str = text;
                 }
         }
@@ -122,7 +122,7 @@ public class Homework_8_6 {
             for (int k = 0; k < i; ++k)
                 if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) {
                     String text = s.substring(k, i+1);
-                    if(StringUtil.isPalindrome(text))
+                    if(isPalindrome(text))
                         if(text.length() == MIN_PALINDROME_LEN)
                             return text;
                         else if(str.isEmpty())
