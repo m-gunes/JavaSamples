@@ -21,8 +21,8 @@ public class Homework_8_7 {
         System.out.printf("TR First pangram is : %s%n", StringUtil1.getFirstPangramTR(s));
         System.out.printf("TR Last pangram is : %s%n", StringUtil1.getLastPangramTR(s));
 
-        System.out.printf("EN First pangram is : %s%n", StringUtil1.getFirstPangramEN(s));
-        System.out.printf("EN Last pangram is : %s%n", StringUtil1.getLastPangramEN(s));
+        // System.out.printf("EN First pangram is : %s%n", StringUtil1.getFirstPangramEN(s));
+        // System.out.printf("EN Last pangram is : %s%n", StringUtil1.getLastPangramEN(s));
     }
 
     public static void main(String[] args)

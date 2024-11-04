@@ -102,7 +102,7 @@ public class Homework_8_6 {
                 continue;
 
             for (int k = 0; k < i; ++k)
-                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) { // bu kontrol ile gereksiz substring metodu ile olusacak yeni String nesnesi yaratılmasını önlenmeye calisilmistir.
+                if(Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(k))) { // bu kontrol ile substring metodu ile oluşacak gereksiz yeni String nesnesinin yaratılması önlenmeye çalışılmıştır
                     String text = s.substring(k, i+1);
                     if(isPalindrome(text) && text.length() > str.length())
                         str = text;
