@@ -5,7 +5,7 @@ public class IntValue {
     private static final int CACHE_MAX = 127;
     private static final int INDEX_DIFFERENCE = 128;
     private final int m_value;
-    private static final IntValue [] CACHE = new IntValue[CACHE_MAX - CACHE_MIN + 1];
+    private static final IntValue [] CACHE = new IntValue[CACHE_MAX - CACHE_MIN + 1]; //  constant folding optimization sayesinde bu derleme zamaninda hesaplanip ara koda yaziliyor.
 
     private IntValue(int value)
     {
