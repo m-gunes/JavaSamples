@@ -30,6 +30,21 @@ public class NumberUtilGetDigitsTest {
             long val = r.nextLong();
             System.out.printf("%d -> ", val);
             print(getDigits(val));
+
+            System.out.printf("%d -> ", val);
+            print(getDigitsInTwos(val));
+
+            System.out.printf("%d -> ", val);
+            print(getDigitsInThrees(val));
+            System.out.println("------------------------------------------------------------");
         }
+
+
+        System.out.print("0 -> ");
+        print(getDigits(0));
+        System.out.print("0 -> ");
+        print(getDigitsInTwos(0));
+        System.out.print("0 -> ");
+        print(getDigitsInThrees(0));
     }
 }

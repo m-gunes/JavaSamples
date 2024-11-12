@@ -14,6 +14,19 @@ public class NumberUtil {
     private static final String [] TENS_TR = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
     private static final String [] NUMBER_UNITS_TR = {"kentilyon", "katrilyon", "trilyon", "milyar", "milyon", "bin", ""};
 
+    private static int [] getDigits(long a, int n)
+    {
+        int divider = (int) Math.pow(10, n);
+        a = Math.abs(a);
+        int [] digits = new int[a == 0 ? 1 : (int) (Math.log10(a) / n) + 1];
+
+        for (int i = digits.length - 1; i >= 0; digits[i--] = (int) (a % divider), a /= divider)
+            ;
+
+        return digits;
+    }
+
+
     private static String numToStr3DigitsTR(int val)
     {
         StringBuilder sb = new StringBuilder();
@@ -68,7 +81,7 @@ public class NumberUtil {
         return result;
     }
 
-    public static int [] getDigits(long a)
+    public static int [] getDigits_v2(long a)
     {
         int [] digits = new int[countDigits(a)];
         a = Math.abs(a);
@@ -78,7 +91,7 @@ public class NumberUtil {
 
         return digits;
     }
-    public static int [] getDigits2(long a)
+    public static int [] getDigits_v3(long a)
     {
         int [] digits = new int[countDigits(a)];
         int i = digits.length - 1;
@@ -91,15 +104,19 @@ public class NumberUtil {
         return digits;
     }
 
+    public static int [] getDigits(long a)
+    {
+        return getDigits(a, 1);
+    }
+
+    public static int [] getDigitsInTwos(long a)
+    {
+        return getDigits(a, 2);
+    }
+
     public static int [] getDigitsInThrees(long a)
     {
-        a = Math.abs(a);
-        int [] threes = new int[a == 0 ? 1 : (int) (Math.log10(a) / 3) + 1]; // Check the operator precedence table.
-
-        for (int i = threes.length - 1; a != 0; threes[i--] = (int) (a % 1000), a /= 1000)
-            ;
-
-        return threes;
+        return getDigits(a, 3);
     }
 
     public static int getDigitsPowSum(int a)
