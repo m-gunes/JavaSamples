@@ -17,6 +17,12 @@ public class NumberUtil {
     private static final String [] TENS_TR = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
     private static final String [] NUMBER_UNITS_TR = {"kentilyon", "katrilyon", "trilyon", "milyar", "milyon", "bin", ""};
 
+    private static final String ZERO_EN = "zero";
+    private static final String MINUS_EN= "minus";
+    private static final String [] ONES_EN = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    private static final String [] TENS_EN = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    private static final String [] NUMBER_UNITS_EN = {"quintillion", "quadrillion", "trillion", "billion", "million", "thousand", ""};
+
     private static int [] getDigits(long a, int n)
     {
         int divider = (int) Math.pow(10, n);
@@ -40,15 +46,33 @@ public class NumberUtil {
 
         if (a != 0) {
             if(a != 1)
-                sb.append(ONES_TR[a]).append(" ");
+                sb.append(ONES_TR[a]).append(SPACE);
             sb.append("yüz ");
         }
 
         if (b != 0)
-            sb.append(TENS_TR[b]).append(" ");
+            sb.append(TENS_TR[b]).append(SPACE);
 
         if (c != 0)
-            sb.append(ONES_TR[c]).append(" ");
+            sb.append(ONES_TR[c]).append(SPACE);
+
+        return sb.isEmpty() ? "" : sb.substring(0, sb.length() - 1);
+    }
+
+    private static String numToStr3DigitsEN(int val)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        int a = val / 100;
+        int b = val / 10 % 10;
+        int c = val % 10;
+
+        if (a != 0)
+            sb.append(ONES_EN[a]).append(SPACE).append("hundred ");
+        if (b != 0)
+            sb.append(TENS_EN[b]).append(SPACE);
+        if (c != 0)
+            sb.append(ONES_EN[c]).append(SPACE);
 
         return sb.isEmpty() ? "" : sb.substring(0, sb.length() - 1);
     }
@@ -225,13 +249,31 @@ public class NumberUtil {
         int idx = NUMBER_UNITS_TR.length - 1;
 
         for (int i = threes.length - 1; i >= 0; --i) {
-            if (threes[i] != 0)
+            if (threes[i] != 0) // I am not sure if this is possible
                 sb.insert(0, "%s%s ".formatted(idx == NUMBER_UNITS_TR.length - 2 && threes[i] == 1 ? "" : numToStr3DigitsTR(threes[i]), NUMBER_UNITS_TR[idx]));
 
             --idx;
         }
 
         return "%s%s".formatted(a < 0 ? MINUS_TR + " " : "", sb.substring(0, sb.length() - 1));
+    }
+
+    public static String numToStrEN(long a)
+    {
+        if (a == 0)
+            return ZERO_EN;
+
+        int [] threes = getDigitsInThrees(a);
+        StringBuilder sb = new StringBuilder();
+        int idx = NUMBER_UNITS_TR.length - 1;
+
+        for (int i = threes.length - 1; i >= 0; --i) {
+            if (threes[i] != 0)
+                sb.insert(0, "%s %s ".formatted(numToStr3DigitsEN(threes[i]), NUMBER_UNITS_EN[idx]));
+            --idx;
+        }
+
+        return "%s%s".formatted(a < 0 ? MINUS_EN + SPACE : "",  sb.substring(0, sb.length() - 1));
     }
 
     public static String numToStrTR_v1(long a) // it doesn't work properly
