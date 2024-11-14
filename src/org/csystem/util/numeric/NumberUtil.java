@@ -10,6 +10,9 @@ public class NumberUtil {
     private NumberUtil()
     {
     }
+    private static final char SPACE = ' ';
+    private static final String ZERO_TR = "sıfır";
+    private static final String MINUS_TR = "eksi";
     private static final String [] ONES_TR = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
     private static final String [] TENS_TR = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
     private static final String [] NUMBER_UNITS_TR = {"kentilyon", "katrilyon", "trilyon", "milyar", "milyon", "bin", ""};
@@ -47,7 +50,7 @@ public class NumberUtil {
         if (c != 0)
             sb.append(ONES_TR[c]).append(" ");
 
-        return sb.substring(0, sb.length() - 1);
+        return sb.isEmpty() ? "" : sb.substring(0, sb.length() - 1);
     }
 
     public static int countDigits(long a)
@@ -211,18 +214,45 @@ public class NumberUtil {
         return result;
     }
 
+
     public static String numToStrTR(long a)
     {
         if (a == 0)
-            return "Sifir";
+            return ZERO_TR;
+
+        int [] threes = getDigitsInThrees(a);
+        StringBuilder sb = new StringBuilder();
+        int idx = NUMBER_UNITS_TR.length - 1;
+
+        for (int i = threes.length - 1; i >= 0; --i) {
+            if (threes[i] != 0)
+                sb.insert(0, "%s%s ".formatted(idx == NUMBER_UNITS_TR.length - 2 && threes[i] == 1 ? "" : numToStr3DigitsTR(threes[i]), NUMBER_UNITS_TR[idx]));
+
+            --idx;
+        }
+
+        return "%s%s".formatted(a < 0 ? MINUS_TR + " " : "", sb.substring(0, sb.length() - 1));
+    }
+
+    public static String numToStrTR_v1(long a) // it doesn't work properly
+    {
+        if (a == 0)
+            return ZERO_TR;
 
         int [] threes = getDigitsInThrees(a);
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < threes.length; ++i)
-            sb.append(numToStr3DigitsTR(threes[i])).append(" ").append(NUMBER_UNITS_TR[(NUMBER_UNITS_TR.length - threes.length) + i]).append(" ");
+            sb.append(numToStr3DigitsTR(threes[i]))
+                    .append(SPACE)
+                    .append(NUMBER_UNITS_TR[(NUMBER_UNITS_TR.length - threes.length) + i])
+                    .append(SPACE);
 
-        return sb.substring(0, sb.length() - 1);
+
+        if (a < 0)
+            sb.insert(0, MINUS_TR).insert(MINUS_TR.length(), SPACE);
+
+        return sb.substring(0, sb.length() - 2);
     }
 
     public static int reverse(int val)
