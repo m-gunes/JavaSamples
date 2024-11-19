@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class CardApp {
     public static void main(String[] args)
     {
-        getDeck();
+        getShuffledDeck();
     }
 
     public static void getCard()
@@ -30,9 +30,15 @@ public class CardApp {
         }
     }
 
-    public static void getDeck()
+    public static void getNewDeck()
     {
-        for (Card card : Card.getDeck())
+        for (Card card : Card.newDeck())
+            System.out.println(card.toString());
+    }
+
+    public static void getShuffledDeck()
+    {
+        for (Card card : Card.newShuffledDeck(new Random()))
             System.out.println(card.toString());
     }
 }
