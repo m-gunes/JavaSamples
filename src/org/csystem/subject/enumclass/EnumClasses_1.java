@@ -1,4 +1,4 @@
-package org.csystem.subject;
+package org.csystem.subject.enumclass;
 
 /*
     Bir enum sınıfına sabitler dışında da eleman eklenebilmektedir.
@@ -22,12 +22,12 @@ package org.csystem.subject;
 
 import java.util.Random;
 
-public class EnumClasses2 {
+public class EnumClasses_1 {
     public static void main(String[] args)
     {
-        Color2 color1 = Color2.randomColor(new Random());
+        Colorr color1 = Colorr.randomColor(new Random());
         System.out.println("-----------");
-        Color2 color2 = Color2.randomColor(new Random()); // color2 yaratildiginda ctor tekrar cagrilmiyor.
+        Colorr color2 = Colorr.randomColor(new Random()); // color2 yaratildiginda ctor tekrar cagrilmiyor.
 
         System.out.println(color1.toString());
         System.out.println(color2.toString());
@@ -35,16 +35,16 @@ public class EnumClasses2 {
     }
 }
 
-enum Color2 {
+enum Colorr {
     RED(), GREEN(), BLUE(), WHITE, BLACK;
-    private static final Color2 [] VALUES = values();
+    private static final Colorr[] VALUES = values();
 
-    Color2()
+    Colorr()
     {
         System.out.println("I am a default ctor.");
     }
 
-    public static Color2 randomColor(Random random)
+    public static Colorr randomColor(Random random)
     {
         return VALUES[random.nextInt(VALUES.length)];
     }

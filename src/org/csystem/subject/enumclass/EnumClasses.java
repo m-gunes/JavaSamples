@@ -1,4 +1,4 @@
-package org.csystem.subject;
+package org.csystem.subject.enumclass;
 
 import org.csystem.util.thread.ThreadUtil;
 
@@ -31,8 +31,8 @@ class DemoGameApp {
         GameObject go1 = new GameObject("Player-1");
         GameObject go2 = new GameObject("Player-2");
 
-        go1.setColor(Color.RED);
-        go2.setColor(Color.BLUE);
+        go1.setColor(Colour.RED);
+        go2.setColor(Colour.BLUE);
 
         while (true) {
             int index1 = random.nextInt(0, 4);
@@ -60,7 +60,7 @@ enum Color {
 
 class GameObject {
     private final String m_name;
-    private Color m_color;
+    private Colour m_color;
 
     public GameObject(String name)
     {
@@ -81,12 +81,12 @@ class GameObject {
             System.out.println("Invalid direction value");
     }
 
-    public void setColor(Color color)
+    public void setColor(Colour color)
     {
         m_color = color;
     }
 
-    public Color getColor()
+    public Colour getColor()
     {
         return m_color;
     }
