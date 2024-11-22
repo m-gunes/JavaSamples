@@ -4,15 +4,15 @@ import org.csystem.util.thread.ThreadUtil;
 
 import java.util.Random;
 
-/*
-    enum sınıfları enum anahtar sözcüğü ile bildirilirler.
-    Bir enum class içerisinde aralarına virgül konularak bildirilen isimlere enum sabitleri (enum constants) denilmektedir.
-    enum sabitlerinin her biri public, static ve final olarak bildirilmiş ait olduğu enum class türünden referans değişkenlerdir
-    ve bu değişkenler yaratıldıklarında her biri ait oldukları enum class türünden bir nesneyi gösterir duruma gelirler.
-    enum sabitleri için public, static, final ve tür ismi yaratılması geçersizdir.
-    Son enum sabitinden sonra noktalı virgül konabilir.
-    Eğer enum class içerisinde yalnızca enum sabitleri olacaksa bu durumda noktalı virgül konmasına gerek yoktur.
-    Enum sınıfına sabit dışında elemanlar eklenecekse noktalı virgül gereklidir.
+/**
+ enum sınıfları enum anahtar sözcüğü ile bildirilirler.
+ <p>Bir enum class içerisinde aralarına virgül konularak bildirilen isimlere enum sabitleri (enum constants) denilmektedir.
+ <p>enum sabitlerinin her biri public, static ve final olarak bildirilmiş ait olduğu enum class türünden referans değişkenlerdir
+ <p>ve bu değişkenler yaratıldıklarında her biri ait oldukları enum class türünden bir nesneyi gösterir duruma gelirler.
+ <p>enum sabitleri için public, static, final ve tür ismi yaratılması geçersizdir.
+ <p>Son enum sabitinden sonra noktalı virgül konabilir.
+ <p>Eğer enum class içerisinde yalnızca enum sabitleri olacaksa bu durumda noktalı virgül konmasına gerek yoktur.
+ <p>Enum sınıfına sabit dışında elemanlar eklenecekse noktalı virgül gereklidir.
  */
 
 public class EnumClasses {
@@ -46,7 +46,7 @@ class DemoGameApp {
     }
 }
 
-/*
+/**
  sadece bunu yazdigimizda public static final Direction RIGHT, TOP, LEFT, BOTTOM turunden referans veri elemanlari yaratiliyor
  ordinal diye bir methodu var
  values diye static bir metodu var. Hatta toString felan var..
@@ -67,18 +67,19 @@ class GameObject {
         m_name = name;
     }
 
+    /**
+     * enum sabitleri sabit ifadesi (constant expression) olarak ele alınır.
+     * Dolayısıyla enum sınıfları ve sabitleri switch statement ve switch expression ile de kullanılabilir.
+     */
     public void move(Direction direction)
     {
-        if (direction == Direction.RIGHT)
-            System.out.printf("%s moves to right%n", m_name);
-        else if (direction == Direction.TOP)
-            System.out.printf("%s moves to top%n", m_name);
-        else if (direction == Direction.LEFT)
-            System.out.printf("%s moves to left%n", m_name);
-        else if (direction == Direction.BOTTOM)
-            System.out.printf("%s moves to bottom%n", m_name);
-        else
-            System.out.println("Invalid direction value");
+        switch (direction) {
+            case RIGHT -> System.out.printf("%s moves to right%n", m_name);
+            case TOP -> System.out.printf("%s moves to top%n", m_name);
+            case LEFT -> System.out.printf("%s moves to left%n", m_name);
+            case BOTTOM -> System.out.printf("%s moves to bottom%n", m_name);
+            default -> System.out.println("Invalid direction value");
+        }
     }
 
     public void setColor(Colour color)
