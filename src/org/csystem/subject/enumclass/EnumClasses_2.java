@@ -22,7 +22,7 @@ public class EnumClasses_2 {
     }
 }
 
-
+// Bir enum sınıfına ctor eklenmesi mantıksal olarak nesneye bir ya da birden fazla değerin iliştirilmesi (attachment) için kullanılır.
 enum Colour {
     RED(255, 0, 0), GREEN(0, 255, 0), BLUE(0, 0, 255), WHITE(255, 255, 255), BLACK;
     private static final Colour[] VALUES = values();
