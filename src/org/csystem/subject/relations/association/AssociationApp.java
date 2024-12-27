@@ -1,4 +1,4 @@
-package org.csystem.subject.relations.associatin;
+package org.csystem.subject.relations.association;
 
 /**
  * Association:<p>
