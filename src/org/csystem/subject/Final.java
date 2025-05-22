@@ -14,7 +14,6 @@ public class Final {
     }
 }
 
-
 class Sample {
     // public final int a; // Error
     // public static final int b; // Error
