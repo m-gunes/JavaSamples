@@ -41,19 +41,3 @@ class Sample {
     }
 }
 
-
-// final anahtar sözcüğü kullanmadan bir sınıfı türetmeye nasıl kapatırsınız?
-
-//class B extends A { }
-// Şüphesiz pratikte bir sınıfı türetmeye kapatmak için final anahtar sözcüğü kullanılır.
-// Bu durumda türetme yapılamaması için ctor'un private yapılması gerekir.
-class A {
-    private A()
-    {
-    }
-    // Bu sınıf türünden nesnenin de sınıf dışından yaratılabilmesi için programcı bir factory metot yazabilir.
-    public static A create()
-    {
-        return new A();
-    }
-}
