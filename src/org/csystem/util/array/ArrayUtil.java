@@ -3,7 +3,7 @@ package org.csystem.util.array;
 import java.util.Arrays;
 import java.util.Random;
 
-public class ArrayUtil {
+public final class ArrayUtil {
     private ArrayUtil()
     {
     }

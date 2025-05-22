@@ -1,6 +1,6 @@
 package org.csystem.util.console;
 
-public class CommandLineArgsUtil {
+public final class CommandLineArgsUtil {
     private CommandLineArgsUtil()
     {
     }

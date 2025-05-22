@@ -1,6 +1,6 @@
 package org.csystem.util.math;
 
-public class MathUtil {
+public final class MathUtil {
 
     private MathUtil()
     {

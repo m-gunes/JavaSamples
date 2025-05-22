@@ -6,7 +6,7 @@
 package org.csystem.util.numeric;
 
 
-public class NumberUtil {
+public final class NumberUtil {
     private NumberUtil()
     {
     }

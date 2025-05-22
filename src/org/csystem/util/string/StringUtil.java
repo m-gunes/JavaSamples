@@ -2,7 +2,7 @@ package org.csystem.util.string;
 
 import java.util.Random;
 
-public class StringUtil {
+public final class StringUtil {
     private StringUtil()
     {
     }
