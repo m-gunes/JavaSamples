@@ -23,10 +23,16 @@ class DemoApp {
         while (true) {
             System.out.println("-----------------------------------");
             x = factory.create();
-            System.out.printf("Dynamic type:%s%n", x.getClass().getName());
+            String name = x.getClass().getName();
+            System.out.printf("Dynamic type:%s%n", name);
 
-            B y = (B)x; // downcasting
-            y.b = 20;
+            if (name.equals("org.csystem.subject.relations.inheritance.downcasting.B")) {
+                B y = (B)x; // downcasting
+                y.b = 20;
+            } else
+                System.out.println("Invalid casting");
+
+
 
             System.out.println("-----------------------------------");
             ThreadUtil.sleep(1000);
