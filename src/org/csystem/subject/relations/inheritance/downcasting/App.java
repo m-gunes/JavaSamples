@@ -26,13 +26,12 @@ class DemoApp {
             String name = x.getClass().getName();
             System.out.printf("Dynamic type:%s%n", name);
 
-            if (name.equals("org.csystem.subject.relations.inheritance.downcasting.B")) {
+            if (x instanceof B) { // x 'in dinamik turu B 'yi kapsiyorsa demek
+                System.out.println("Valid casting");
                 B y = (B)x; // downcasting
                 y.b = 20;
             } else
                 System.out.println("Invalid casting");
-
-
 
             System.out.println("-----------------------------------");
             ThreadUtil.sleep(1000);
