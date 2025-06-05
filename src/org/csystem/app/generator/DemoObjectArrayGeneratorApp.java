@@ -21,27 +21,27 @@ public class DemoObjectArrayGeneratorApp {
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.printf("Dynamic type:%s%n", o.getClass().getName());
 
-            switch (o) {
-                case String s -> {
-                    String upper = s.toUpperCase();
-                    System.out.printf("Text:%s, Upper:%s%n", s, upper);
-                }
-                case IntValue iVal -> {
-                    int val = iVal.getValue();
-                    System.out.printf("%d * %d = %d%n", val, val, val * val);
-                }
-                case Point p -> System.out.printf("Distance to origin:%f%n", p.euclideanDistance());
-                case Circle c -> System.out.printf("Radius:%f, Area:%f, Circumference:%f%n", c.getRadius(), c.getArea(), c.getCircumference());
-                case Complex c -> System.out.printf("||%s|| = %f%n", c.toString(), c.getLength());
-                default -> {}
-            }
+//            switch (o) {
+//                case String s -> {
+//                    String upper = s.toUpperCase();
+//                    System.out.printf("Text:%s, Upper:%s%n", s, upper);
+//                }
+//                case IntValue iVal -> {
+//                    int val = iVal.getValue();
+//                    System.out.printf("%d * %d = %d%n", val, val, val * val);
+//                }
+//                case Point p -> System.out.printf("Distance to origin:%f%n", p.euclideanDistance());
+//                case Circle c -> System.out.printf("Radius:%f, Area:%f, Circumference:%f%n", c.getRadius(), c.getArea(), c.getCircumference());
+//                case Complex c -> System.out.printf("||%s|| = %f%n", c.toString(), c.getLength());
+//                default -> {}
+//            }
 
 //            if (o instanceof String s) {
 //                String upper = s.toUpperCase();
 //                System.out.printf("Text:%s, Upper:%s%n", s, upper);
 //            }
-//            else if (o instanceof IntValue iVal) {
-//                int val = iVal.getValue();
+//            else if (o instanceof Integer iVal) {
+//                int val = iVal.intValue();
 //                System.out.printf("%d * %d = %d%n", val, val, val * val);
 //            }
 //            else if (o instanceof Point p) {
@@ -54,6 +54,7 @@ public class DemoObjectArrayGeneratorApp {
 //                System.out.printf("||%s|| = %f%n", c.toString(), c.getLength());
 //            }
             System.out.println("-------------------------------------------------------------------------------------");
+
         }
 
     }
