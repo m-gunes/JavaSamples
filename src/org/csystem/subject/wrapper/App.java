@@ -63,5 +63,15 @@ public class App {
         int b = (int) o; // auto-unboxing: (int)o ifadesinin karşılığı -> ((Integer)o).intValue()
         System.out.printf("b = %d%n", b);
 
+
+        // interview question: What is the problem?
+//        Long m = 123; // auto-boxing: Integer.valueOf(123);
+        /**
+         * Integer turden bir adres,Long turdern bir referansa dogrudan atanamaz.
+         * Niye?
+         * Cunku referanslar arasinda atamanin dogrudan yapilabilmesi icin aralarinda turetme iliskisi olmasi gerekiyor.
+         * Bu iki sinifin birbiriyle hic alakasi yok (Integer and Long)
+         */
+
     }
 }
