@@ -18,6 +18,7 @@ public class App {
         // Null atamak demek kullanilmayan bir adres atiyorum demek.
 
         //..
+        // System.gc();
 
     }
 }

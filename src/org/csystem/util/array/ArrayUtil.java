@@ -8,6 +8,10 @@ public final class ArrayUtil {
     {
     }
 
+    /**
+     *
+     Ascending order -> kucukten buyuge, artan, dogal siralama (natural sort order)
+     */
     public static void bubbleSortAscending(int [] a)
     {
         for(int i = 0; i < a.length - 1; ++i)
@@ -29,6 +33,11 @@ public final class ArrayUtil {
         bubbleSort(a, false);
     }
 
+    /**
+     *
+     Bubble sort:
+     iki'serli karsilastirilip buyuk olan en sona cekiliyor (ascending order)
+     */
     public static void bubbleSort(int [] a, boolean descending)
     {
         if(descending)
@@ -86,6 +95,11 @@ public final class ArrayUtil {
         }
     }
 
+    /**
+     *
+     Selection sort:
+     dizinin en kucuk/buyuk elemani bulunup en basa cekiliyor
+     */
     public static void selectionSort(int [] a)
     {
         selectionSort(a, false);
