@@ -1,80 +1,41 @@
 package org.csystem.app;
-//import mustafa.Sample; // burada niteliksiz isim arama kurallari devreye girmeyecekti. Artik bu bildirimle bu bildirimle bu derleme biriminde sample gorursen bunu al diyor.
 
-import org.csystem.util.console.CommandLineArgsUtil;
+import org.csystem.util.string.StringUtil;
 
-import java.util.Random;
-
-import static org.csystem.util.console.CommandLineArgsUtil.checkLengthEquals;
+import java.util.*;
 
 class App {
-    public static void main(String[] args) {
-
-        checkLengthEquals(3, args.length, "usage: java org.csystem.app.App <count> <origin> <bound>" );
-
+    public static void main(String[] args)
+    {
+        ArrayList texts = new ArrayList();
         Random random = new Random();
-        int count = Integer.parseInt(args[0]);
-        int origin = Integer.parseInt(args[1]);
-        int bound = Integer.parseInt(args[2]);
+        Scanner kb = new Scanner(System.in);
+        while (true) {
+            System.out.print("Input a number:");
+            int n = Integer.parseInt(kb.nextLine());
 
-        for(int i = 0; i < count; ++i)
-            System.out.printf("%d ", random.nextInt(origin, bound));
+            if (n <= 0) break;
 
-    }
-    public static void refArrWithObject()
-    {
-        Sample2 [] refList;
-        refList = new Sample2[10];
+            String text = StringUtil.generateRandomTextTR(random, n);
+            texts.add(text);
+        }
 
-        for(int i = 0; i < 10; ++i)
-            refList[i] = new Sample2(i);
+        System.out.println();
 
-        System.out.println("Printing...");
+        for (Object o: texts) {
+            String text = (String)o;
+            System.out.println(text);
+        }
 
-        for(int i = 0; i < 10; ++i)
-            System.out.printf("%d", refList[i].x);
+        System.out.println("--------------------------------------");
 
-    }
-    public static void refArr()
-    {
-        Sample2 [] refList;
-        refList = new Sample2[10];
+        String oldText = (String)texts.set(3, "zonguldak");
 
-        for(int i = 0; i < 10; ++i)
-           refList[i].x = i;
+        for (Object o: texts) {
+            String text = (String)o;
+            System.out.println(text);
+        }
 
-        System.out.println("Printing...");
-
-        for(int i = 0; i < 10; ++i)
-            System.out.printf("%d", refList[i].x);
-
+        System.out.printf("Old Text: %s%n", oldText);
     }
 }
-
-class Sample2 {
-    public int x;
-    public Sample2(int a)
-    {
-        x = a;
-    }
-}
-
-/*
-
- Ascending order -> kucukten buyuge, artan, dogal siralama (natural sort order)
-
-Bubble sort:
-iki'serli karsilastirilip buyuk olan en sona cekiliyor (ascending order)
-
-Selection sort:
-dizinin en kucuk/buyuk elemani bulunup en basa cekiliyor
-
-
-* */
-
-
-//public class Sample { // ayni derleme biriminde oldugu icin bunu daha onemli olarak yorumluyor.
-//    public static void foo(){
-//        System.out.println("mustafa.Sample.foo()");
-//    }
-//}
