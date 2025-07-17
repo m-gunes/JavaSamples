@@ -28,8 +28,10 @@ class App {
         }
 
         System.out.println("--------------------------------------");
-        texts.clear();
-        System.out.printf("Size:%d%n", texts.size());
+        if (random.nextBoolean())
+            texts.clear();
+
+        System.out.println(texts.isEmpty() ? "Empty" : "Not Empty");
 
 //        String oldText = (String) texts.set(3, "zonguldak");
 //        String oldText = (String) texts.remove(3);
