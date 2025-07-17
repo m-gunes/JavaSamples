@@ -29,7 +29,8 @@ class App {
 
         System.out.println("--------------------------------------");
 
-        String oldText = (String)texts.set(3, "zonguldak");
+//        String oldText = (String) texts.set(3, "zonguldak");
+        String oldText = (String) texts.remove(3);
 
         for (Object o: texts) {
             String text = (String)o;
