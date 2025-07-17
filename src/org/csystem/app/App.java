@@ -28,15 +28,17 @@ class App {
         }
 
         System.out.println("--------------------------------------");
+        texts.clear();
+        System.out.printf("Size:%d%n", texts.size());
 
 //        String oldText = (String) texts.set(3, "zonguldak");
-        String oldText = (String) texts.remove(3);
-
-        for (Object o: texts) {
-            String text = (String)o;
-            System.out.println(text);
-        }
-
-        System.out.printf("Old Text: %s%n", oldText);
+//        String oldText = (String) texts.remove(3);
+//
+//        for (Object o: texts) {
+//            String text = (String)o;
+//            System.out.println(text);
+//        }
+//
+//        System.out.printf("Old Text: %s%n", oldText);
     }
 }
