@@ -7,7 +7,7 @@ import java.util.*;
 class App {
     public static void main(String[] args)
     {
-        ArrayList texts = new ArrayList();
+        Vector texts = new Vector();
         Random random = new Random();
         Scanner kb = new Scanner(System.in);
         while (true) {
@@ -21,26 +21,15 @@ class App {
         }
 
         System.out.println();
+        System.out.printf("Size:%d%n Capasity:%d%n", texts.size(), texts.capacity());
 
-        for (Object o: texts) {
-            String text = (String)o;
-            System.out.println(text);
-        }
+        texts.trimToSize();
+        System.out.printf("Size:%d%n Capasity:%d%n", texts.size(), texts.capacity());
 
-        System.out.println("--------------------------------------");
-        if (random.nextBoolean())
-            texts.clear();
+        texts.clear();
+        System.out.printf("Size:%d%n Capasity:%d%n", texts.size(), texts.capacity());
 
-        System.out.println(texts.isEmpty() ? "Empty" : "Not Empty");
-
-//        String oldText = (String) texts.set(3, "zonguldak");
-//        String oldText = (String) texts.remove(3);
-//
-//        for (Object o: texts) {
-//            String text = (String)o;
-//            System.out.println(text);
-//        }
-//
-//        System.out.printf("Old Text: %s%n", oldText);
+        texts.trimToSize();
+        System.out.printf("Size:%d%n Capasity:%d%n", texts.size(), texts.capacity());
     }
 }
