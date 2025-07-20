@@ -1,5 +1,6 @@
 package org.csystem.util.string;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public final class StringUtil {
@@ -132,6 +133,22 @@ public final class StringUtil {
     public static boolean isPangramTR(String s)
     {
         return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
+    }
+
+    public static String join(ArrayList texts, String delimiter)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (Object o: texts) {
+            String s = (String) o;
+            sb.append(o).append(delimiter);
+        }
+
+        return sb.substring(0, sb.length() - delimiter.length());
+    }
+
+    public static String join(ArrayList texts, char delimiter)
+    {
+        return join(texts, String.valueOf(delimiter));
     }
 
     public static String join(String[] s, String delimiter)
