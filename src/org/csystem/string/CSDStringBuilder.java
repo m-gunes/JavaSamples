@@ -47,32 +47,32 @@ public class CSDStringBuilder {
 
     public CSDStringBuilder append(String str)
     {
-        return append(str);
+        return append(str.toCharArray());
     }
 
     public CSDStringBuilder append(char ch)
     {
-        return append(ch);
+        return append(String.valueOf(ch));
     }
 
     public CSDStringBuilder append(int a)
     {
-        return append(a);
+        return append(String.valueOf(a));
     }
 
     public CSDStringBuilder append(long a)
     {
-        return append(a);
+        return append(String.valueOf(a));
     }
 
     public CSDStringBuilder append(double a)
     {
-        return append(a);
+        return append(String.valueOf(a));
     }
 
     public CSDStringBuilder append(char [] str)
     {
-        if (checkCapacity(String.valueOf(str)))
+        if (!checkCapacity(String.valueOf(str)))
             enLargeCapacity(calculateNewCapacity(str));
 
         System.arraycopy(str, 0, m_chars, m_index, str.length);
@@ -104,47 +104,57 @@ public class CSDStringBuilder {
     {
         if (minCapacity > m_chars.length)
             enLargeCapacity(Math.max(minCapacity, m_chars.length * CAPACITY_INCREMENT_FACTOR));
-
     }
 
     public int indexOf(String str)
     {
-        throw new UnsupportedOperationException("TODO");
+        return indexOf(str, 0); // Todo: Check
     }
 
     public int indexOf(String str, int fromIndex)
     {
-        throw new UnsupportedOperationException("TODO");
+        return String.valueOf(m_chars).indexOf(str, fromIndex); // Todo: Check
     }
 
     public CSDStringBuilder insert(int index, String str)
     {
-        throw new UnsupportedOperationException("TODO");
+        return insert(index, str.toCharArray());
     }
 
     public CSDStringBuilder insert(int index, char ch)
     {
-        throw new UnsupportedOperationException("TODO");
+        return insert(index, String.valueOf(ch));
     }
 
     public CSDStringBuilder insert(int index, int a)
     {
-        throw new UnsupportedOperationException("TODO");
+        return insert(index, String.valueOf(a));
     }
 
     public CSDStringBuilder insert(int index, long a)
     {
-        throw new UnsupportedOperationException("TODO");
+        return insert(index, String.valueOf(a));
     }
 
     public CSDStringBuilder insert(int index, double a)
     {
-        throw new UnsupportedOperationException("TODO");
+        return insert(index, String.valueOf(a));
     }
 
-    public CSDStringBuilder insert(int index, char [] str)
+    public CSDStringBuilder insert(int index, char [] str) // Todo: Check
     {
-        throw new UnsupportedOperationException("TODO");
+        if (!checkCapacity(String.valueOf(str)))
+            enLargeCapacity(calculateNewCapacity(str));
+
+        char [] tempList = Arrays.copyOf(str, str.length + Math.abs(m_index - index));
+
+        for (int i = 0 ; i < m_index - index ; ++i)
+            tempList[str.length + i] = m_chars[index + i];
+
+        System.arraycopy(tempList, 0, m_chars, index, tempList.length);
+        m_index += str.length;
+
+        return this;
     }
 
     public int length()
