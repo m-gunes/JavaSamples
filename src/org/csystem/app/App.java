@@ -12,7 +12,7 @@ class App {
         Circle ci = new Circle(100.5);
         Point p = Point.createCartesian(300, 67.8);
 
-        System.out.println("Circle -> " + ci);
+        System.out.println("Circle -> " + ci); // ci.toString();
         System.out.println("Point -> " + p);
         System.out.print(1);
         System.out.printf("a = %s, b = %s, c = %s%n", Integer.valueOf(a), b, c);
