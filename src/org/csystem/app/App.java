@@ -2,25 +2,29 @@ package org.csystem.app;
 
 import org.csystem.math.geometry.Point;
 import org.csystem.util.console.Console;
-import org.csystem.util.thread.ThreadUtil;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 class App {
     public static void main(String[] args)
     {
-        Point origin = Point.createCartesian(0, 0);
+        ArrayList  list = new ArrayList();
         Random r = new Random();
 
         while (true) {
-            Point point = Point.createCartesian(r.nextInt(-1, 1), r.nextInt(-1, 1));
+            int x = r.nextInt(-1, 1);
+            int y = r.nextInt(-1, 1);
 
-            Console.writeLine(point);
+            list.add(Point.createCartesian(x, y));
 
-            if (point.equals(origin))
+            if (x == 0 && y == 0)
                 break;
-
-            ThreadUtil.sleep(1000);
         }
+
+        Console.writeLine("Size:%d", list.size());
+        int index = list.indexOf(Point.createCartesian(0, 0));
+
+        Console.writeLine("Index:%d", index);
     }
 }
