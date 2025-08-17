@@ -70,4 +70,14 @@ public class AnalyticalCircle extends Circle {
     {
         return m_center.euclideanDistance(other.m_center);
     }
+
+    public boolean equals(Object other)
+    {
+        return other instanceof AnalyticalCircle ac && super.equals(other) && m_center.equals(ac.m_center);
+    }
+
+    public String toString()
+    {
+        return "%s, Center:%s".formatted(super.toString(), m_center);
+    }
 }

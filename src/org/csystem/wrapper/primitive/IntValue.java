@@ -30,6 +30,11 @@ public class IntValue {
         return m_value;
     }
 
+    public boolean equals(Object other)
+    {
+        return other instanceof IntValue i && i.m_value ==  m_value;
+    }
+
     public String toString()
     {
         return String.valueOf(m_value);

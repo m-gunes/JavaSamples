@@ -38,6 +38,11 @@ public class Circle {
         return 2 * PI * m_r;
     }
 
+    public boolean equals(Object other)
+    {
+        return other instanceof Circle c && Math.abs(m_r - c.m_r) < DELTA;
+    }
+
     public String toString()
     {
         return "Radius = %f, Area = %f, Circumference = %f".formatted(m_r, getArea(), getCircumference());

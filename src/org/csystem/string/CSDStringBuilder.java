@@ -167,6 +167,11 @@ public class CSDStringBuilder {
         enLargeCapacity(m_index);
     }
 
+    public boolean equals(Object other)
+    {
+        throw new UnsupportedOperationException("Todo");
+    }
+
     public String toString()
     {
         return String.valueOf(m_chars, 0, m_index);

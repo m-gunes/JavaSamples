@@ -8,6 +8,7 @@ package org.csystem.math;
 import static java.lang.Math.sqrt;
 
 public class Complex {
+    private static final double DELTA = 0.00001;
     private final double m_real;
     private final double m_imag;
 
@@ -81,6 +82,11 @@ public class Complex {
     public double getLength()
     {
         return getNorm();
+    }
+
+    public boolean equals(Object other)
+    {
+        return other instanceof Complex z && Math.abs(m_real - z.m_real) < DELTA && Math.abs(m_imag - z.m_imag) < DELTA;
     }
 
     public String toString()
