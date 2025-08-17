@@ -1,33 +1,26 @@
 package org.csystem.app;
 
-import org.csystem.math.geometry.Circle;
 import org.csystem.math.geometry.Point;
+import org.csystem.util.console.Console;
+import org.csystem.util.thread.ThreadUtil;
+
+import java.util.Random;
 
 class App {
     public static void main(String[] args)
     {
-        int a = 10;
-        double b = 10.5;
-        boolean c = true;
-        Circle ci = new Circle(100.5);
-        Point p = Point.createCartesian(300, 67.8);
+        Point origin = Point.createCartesian(0, 0);
+        Random r = new Random();
 
-        System.out.println("Circle -> " + ci); // ci.toString();
-        System.out.println("Point -> " + p);
-        System.out.print(1);
-        System.out.printf("a = %s, b = %s, c = %s%n", Integer.valueOf(a), b, c);
-        System.out.println("a = " + a + ", b = " + b + ", c = " + c);
-        System.out.print("a:" + Integer.valueOf(a).toString());
+        while (true) {
+            Point point = Point.createCartesian(r.nextInt(-1, 1), r.nextInt(-1, 1));
 
-        System.out.println("-----");
+            Console.writeLine(point);
 
-        Sample s = new Sample();
-        Sample s2= new Sample();
-        System.out.println(s);
-        System.out.println(s2);
+            if (point.equals(origin))
+                break;
+
+            ThreadUtil.sleep(1000);
+        }
     }
-}
-
-class Sample {
-
 }

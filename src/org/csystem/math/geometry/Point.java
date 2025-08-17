@@ -52,6 +52,11 @@ public class Point {
         return PointCommon.euclideanDistance(m_x, m_y, x, y);
     }
 
+    public boolean equals(Object other)
+    {
+        return other instanceof Point p && PointCommon.equals(m_x, m_y, p.m_x, p.m_y);
+    }
+
     public String toString()
     {
         return PointCommon.toString(m_x, m_y);
