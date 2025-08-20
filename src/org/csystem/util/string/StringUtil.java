@@ -8,6 +8,22 @@ public final class StringUtil {
     {
     }
 
+    private static final String LETTERS_EN;
+    private static final String LETTERS_TR;
+    private static final String CAPITAL_LETTERS_EN;
+    private static final String CAPITAL_LETTERS_TR;
+    private static final String ALL_LETTERS_EN;
+    private static final String ALL_LETTERS_TR;
+
+    static {
+        LETTERS_EN = "abcdefghijklmnopqrstuvwxyz";
+        LETTERS_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
+        CAPITAL_LETTERS_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        CAPITAL_LETTERS_TR = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+        ALL_LETTERS_EN = LETTERS_EN + CAPITAL_LETTERS_EN;
+        ALL_LETTERS_TR = LETTERS_TR + CAPITAL_LETTERS_TR;
+    }
+
     public static String capitalize(String s)
     {
         return s.isEmpty() ? s : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -50,12 +66,12 @@ public final class StringUtil {
 
     public static String generateRandomTextEN(Random r, int count)
     {
-        return generateRandomText(r, count, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+        return generateRandomText(r, count, ALL_LETTERS_EN);
     }
 
     public static String generateRandomTextTR(Random r, int count)
     {
-        return generateRandomText(r, count, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
+        return generateRandomText(r, count, ALL_LETTERS_TR);
     }
 
     public static String[] generateRandomTexts(Random r, int count, int origin, int bound, String sourceText)
@@ -69,12 +85,12 @@ public final class StringUtil {
 
     public static String[] generateRandomTextsEN(Random r, int count, int origin, int bound)
     {
-        return generateRandomTexts(r, count, origin, bound, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+        return generateRandomTexts(r, count, origin, bound, ALL_LETTERS_EN);
     }
 
     public static String[] generateRandomTextsTR(Random r, int count, int origin, int bound)
     {
-        return generateRandomTexts(r, count, origin, bound, "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz");
+        return generateRandomTexts(r, count, origin, bound, ALL_LETTERS_TR);
     }
 
 
@@ -132,7 +148,7 @@ public final class StringUtil {
 
     public static boolean isPangramTR(String s)
     {
-        return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
+        return isPangram(s.toLowerCase(), LETTERS_TR);
     }
 
     public static String join(ArrayList texts, String delimiter)

@@ -10,28 +10,52 @@ class App {
     public static void main(String[] args)
     {
 
+        Sample.foo();
+        Console.writeLine("--------------------");
+        Sample.foo();
+        Console.writeLine("--------------------");
+        Console.writeLine("Value:%d", Sample.getValue());
+        Console.writeLine("Value:%d", Sample.getValue());
+
     }
 }
 
-class C extends B {
+class Sample {
+    private static final int VALUE;
 
-    public void foo() // error
-    {
-        Console.writeLine("B.foo");
+//    private static final int VALUE = randomIntValue();
+//    private static int randomIntValue()
+//    {
+//        Console.writeLine("static method");
+//        Random random = new Random();
+//        return random.nextInt(100);
+//    }
+    static {
+        Console.writeLine("Static initializer 1");
+        Random random = new Random();
+        VALUE = random.nextInt(100);
     }
 
-}
-
-class B extends A {
-    public final  void foo()
-    {
-        Console.writeLine("B.foo");
+    static {
+        Console.writeLine("Static initializer 2");
     }
-}
 
-class A {
-    public void foo()
+    public Sample(int a)
     {
-        Console.writeLine("A.foo");
+
+    }
+
+    static {
+        Console.writeLine("Static initializer 3");
+    }
+
+    public static int getValue()
+    {
+        return VALUE;
+    }
+
+    public static void foo()
+    {
+        Console.writeLine("foo");
     }
 }
