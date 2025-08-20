@@ -9,22 +9,29 @@ import java.util.Random;
 class App {
     public static void main(String[] args)
     {
-        ArrayList  list = new ArrayList();
-        Random r = new Random();
 
-        while (true) {
-            int x = r.nextInt(-1, 1);
-            int y = r.nextInt(-1, 1);
+    }
+}
 
-            list.add(Point.createCartesian(x, y));
+class C extends B {
 
-            if (x == 0 && y == 0)
-                break;
-        }
+    public void foo() // error
+    {
+        Console.writeLine("B.foo");
+    }
 
-        Console.writeLine("Size:%d", list.size());
-        int index = list.indexOf(Point.createCartesian(0, 0));
+}
 
-        Console.writeLine("Index:%d", index);
+class B extends A {
+    public final  void foo()
+    {
+        Console.writeLine("B.foo");
+    }
+}
+
+class A {
+    public void foo()
+    {
+        Console.writeLine("A.foo");
     }
 }
