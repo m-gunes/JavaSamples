@@ -1,61 +1,38 @@
 package org.csystem.app;
 
-import org.csystem.math.geometry.Point;
 import org.csystem.util.console.Console;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 class App {
     public static void main(String[] args)
     {
-
-        Sample.foo();
-        Console.writeLine("--------------------");
-        Sample.foo();
-        Console.writeLine("--------------------");
-        Console.writeLine("Value:%d", Sample.getValue());
-        Console.writeLine("Value:%d", Sample.getValue());
-
+        Sample s1 = new Sample(3);
+        Console.writeLine("-----------------");
     }
 }
 
 class Sample {
-    private static final int VALUE;
 
-//    private static final int VALUE = randomIntValue();
-//    private static int randomIntValue()
-//    {
-//        Console.writeLine("static method");
-//        Random random = new Random();
-//        return random.nextInt(100);
-//    }
-    static {
-        Console.writeLine("Static initializer 1");
-        Random random = new Random();
-        VALUE = random.nextInt(100);
-    }
+   {
+        Console.writeLine("Non-Static initializer 1");
+   }
 
-    static {
-        Console.writeLine("Static initializer 2");
-    }
+   public Sample()
+   {
+       Console.writeLine("I'm a default Ctor");
+   }
 
     public Sample(int a)
     {
-
+        this();
+        Console.writeLine("I'm a Ctor with parameter int");
     }
 
-    static {
-        Console.writeLine("Static initializer 3");
-    }
-
-    public static int getValue()
     {
-        return VALUE;
+        Console.writeLine("Non-Static initializer 2");
     }
 
-    public static void foo()
     {
-        Console.writeLine("foo");
+        Console.writeLine("Non-Static initializer 3");
     }
+
 }
