@@ -3,10 +3,10 @@
 >**Sınıf Çalışması:** Bir kesri temsil eden Fraction isimli sınıfı aşağıdaki açıklamalara göre yazınız
 >
 >**Açıklamalar:**
->- Sınıf Matematikteki bir kesri temsil ettiğinden pay (numerator) ve payda (denominator) değerleri tutulacaktır.
->- Sınıfın ilgili set ve get metotları yazılacaktır.
->- Pay'ın sıfırdan farklı veya sıfır ve paydanın sıfır olması durumunda uygun mesajla birlikte program sonlandırılacaktır.
->- Kesir her durumda sadeleşmiş bir biçimde tutulacaktır. Örneğin kesrin pay ve paydası sırasıyla 4 ve 18 olarak verildiğinde kesir 2 / 9 olarak tutulacaktır.
+//>- Sınıf Matematikteki bir kesri temsil ettiğinden pay (numerator) ve payda (denominator) değerleri tutulacaktır.
+//>- Sınıfın ilgili set ve get metotları yazılacaktır.
+//>- Pay'ın sıfırdan farklı veya sıfır ve paydanın sıfır olması durumunda uygun mesajla birlikte program sonlandırılacaktır.
+//>- Kesir her durumda sadeleşmiş bir biçimde tutulacaktır. Örneğin kesrin pay ve paydası sırasıyla 4 ve 18 olarak verildiğinde kesir 2 / 9 olarak tutulacaktır.
 >- Kesir negatif ise işaret payda bulunacaktır. Örneğin kesrin pay ve paydası sırasıyla 3 ve -4 olarak verilmişse  kesir -3 / 4 biçiminde tutulacaktır.
 >- Kesrin pay ve paydasının her ikisinin birden negatif olması durumunda kesir pozitif olarak tutulacaktır.
 >- Kesrin payının sıfır olması durumunda payda ne olursa olsun 1(bir) yapılacaktır.
@@ -148,22 +148,41 @@ public class Fraction {
     public Fraction()
     {
         // 0/1 kesri
-        m_a = 0;
-        m_b = 1;
+        this(0, 1);
     }
 
     public Fraction(int a)
     {
         // a / 1 kesri
-        m_a = a;
-        m_b = 1;
+        this(a, 1);
     }
 
     public Fraction(int a, int b)
     {
         // a/b kesri
-        m_a = a;
-        m_b = b;
+        if (b == 0)
+            System.exit(0);
+        simplify(a, b);
+    }
+
+    private void simplify(int a, int b)
+    {
+        int val = 2;
+        boolean negative = a > 0 || b > 0;
+
+        a = Math.abs(a);
+        b = Math.abs(b);
+
+        while (a > 1 && b > 1) {
+            if (a % val == 0 && b % val == 0) {
+                a /= val;
+                b /= val;
+            } else
+                ++val;
+        }
+
+        m_a = negative ? -a : Math.abs(a);
+        m_b = Math.abs(b); // todo: why abs?
     }
 
     public int getNumerator()
