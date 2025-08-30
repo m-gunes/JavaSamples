@@ -8,9 +8,21 @@ import java.util.Scanner;
 class App {
     public static void main(String[] args)
     {
-       int first = Console.readInt("Input first number:", "Invalide first number");
-       int second = Console.readInt("Input second number:", "Invalide second number");
-       Console.writeLine(first * second);
+        try {
+            Util.doWork();
+        }
+        catch (ZeroException ignore) {
+            System.out.println("Zero not allowed");
+        }
+        catch (NegativeException ignore) {
+            System.out.println("You can not enter nagative value!");
+        }
+        finally {
+            System.out.println("Finally block in main");
+        }
+
+
+        System.out.println("main ends..");
     }
 }
 
@@ -27,7 +39,10 @@ class Util {
         }
         catch (NegativeException ex) {
             System.out.println("Negative value is invalid for logarithm");
-            throw ex;
+//            throw ex;
+        }
+        finally {
+            System.out.println("finally block in doWork");
         }
 
         System.out.println("doWork ends!...");
