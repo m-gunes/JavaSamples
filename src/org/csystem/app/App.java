@@ -9,6 +9,22 @@ class App {
     public static void main(String[] args)
     {
         try {
+            Util.doWork();
+        }
+        catch (ZeroException ignore) {
+            System.out.println("Zero value is invalid for logarithm");
+        }
+        catch (NegativeException ignore) {
+            System.out.println("You can not enter negative value!");
+        }
+        System.out.println("main ends!...");
+    }
+}
+
+class Util {
+    public static void doWork() {
+
+        try {
             Scanner kb = new Scanner(System.in);
             System.out.print("input a number:");
             double a = kb.nextInt();
@@ -16,18 +32,12 @@ class App {
             result = MathUtil.log10(a);
             System.out.printf("log10(%f) = %f%n", a, result);
         }
-        catch (MathException ignore) {
-            System.out.println("Invalid input for logarithm");
+        catch (NegativeException ex) {
+            System.out.println("Negative value is invalid for logarithm");
+            throw ex;
         }
-//        catch (NegativeException ignore) {
-//            System.out.println("Negative value is invalid for logarithm");
-//        }
-//        catch (ZeroException ignore) {
-//            System.out.println("Zero value is invalid for logarithm");
-//        }
-        catch (InputMismatchException ignore) {
-            System.out.println("Invalid number");
-        }
+
+        System.out.println("doWork ends!...");
     }
 }
 
