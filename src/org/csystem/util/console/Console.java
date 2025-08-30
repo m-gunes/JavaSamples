@@ -16,8 +16,19 @@ public class Console {
 
     public static int readInt(String prompt)
     {
-        System.out.print(prompt);
-        return Integer.parseInt(KB.nextLine());
+        return readInt(prompt, "");
+    }
+
+    public static int readInt(String prompt, String errorPrompt)
+    {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return Integer.parseInt(KB.nextLine());
+            } catch (NumberFormatException ignore) {
+                System.out.println(errorPrompt);
+            }
+        }
     }
 
     public static long readLong(String prompt)

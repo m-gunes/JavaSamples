@@ -8,16 +8,9 @@ import java.util.Scanner;
 class App {
     public static void main(String[] args)
     {
-        try {
-            Util.doWork();
-        }
-        catch (ZeroException ignore) {
-            System.out.println("Zero value is invalid for logarithm");
-        }
-        catch (NegativeException ignore) {
-            System.out.println("You can not enter negative value!");
-        }
-        System.out.println("main ends!...");
+       int first = Console.readInt("Input first number:", "Invalide first number");
+       int second = Console.readInt("Input second number:", "Invalide second number");
+       Console.writeLine(first * second);
     }
 }
 
