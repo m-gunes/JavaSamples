@@ -17,6 +17,9 @@ class App {
         catch (NegativeException ignore) {
             System.out.println("You can not enter nagative value!");
         }
+        catch (InputMismatchException ignore) {
+            System.out.println("invalid numeric value");
+        }
         finally {
             System.out.println("Finally block in main");
         }
@@ -36,10 +39,6 @@ class Util {
             double result;
             result = MathUtil.log10(a);
             System.out.printf("log10(%f) = %f%n", a, result);
-        }
-        catch (NegativeException ex) {
-            System.out.println("Negative value is invalid for logarithm");
-//            throw ex;
         }
         finally {
             System.out.println("finally block in doWork");
