@@ -31,16 +31,51 @@ public class Console {
         }
     }
 
+    public static long readLong()
+    {
+        return readLong("");
+    }
+
     public static long readLong(String prompt)
     {
-        System.out.print(prompt);
-        return Long.parseLong(KB.nextLine());
+        return readLong(prompt, "");
+    }
+
+    public static long readLong(String prompt, String errorPrompt)
+    {
+        while (true) {
+
+            try {
+                System.out.print(prompt);
+                return Long.parseLong(KB.nextLine());
+            } catch (NumberFormatException ignore) {
+                System.out.println(errorPrompt);
+            }
+        }
+
+    }
+
+    public static double readDouble()
+    {
+        return readDouble("");
     }
 
     public static double readDouble(String prompt)
     {
-        System.out.print(prompt);
-        return Double.parseDouble(KB.nextLine());
+        return readDouble(prompt, "");
+    }
+
+    public static double readDouble(String prompt, String errorPrompt)
+    {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return Double.parseDouble(KB.nextLine());
+            }
+            catch (NumberFormatException ignore) {
+                System.out.println(errorPrompt);
+            }
+        }
     }
 
     public static String readString(String prompt)
