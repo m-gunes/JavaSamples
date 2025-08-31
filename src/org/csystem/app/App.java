@@ -10,7 +10,7 @@ class App {
         try {
             Util.doWork();
         }
-        catch (MathException ex) {
+        catch (Exception ex) {
             Console.writeLine("Math Exception:%s", ex.getMessage());
         }
         finally {
@@ -22,7 +22,7 @@ class App {
 }
 
 class Util {
-    public static void doWork() throws MathException
+    public static void doWork()
     {
         try {
             Scanner kb = new Scanner(System.in);
@@ -30,6 +30,9 @@ class Util {
             double result;
             result = MathUtil.log10(a);
             System.out.printf("log10(%f) = %f%n", a, result);
+        }
+        catch (MathException ex) {
+            Console.writeLine("Math Exception: %s", ex.getMessage());
         }
         finally {
             System.out.println("finally block in doWork");
