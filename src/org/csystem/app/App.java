@@ -10,8 +10,8 @@ class App {
         try {
             Util.doWork();
         }
-        catch (NaNException ex) {
-            Console.writeLine("NaN Exception:%s", ex.getMessage());
+        catch (MathException ex) {
+            Console.writeLine("Math Exception:%s", ex.getMessage());
         }
         finally {
             System.out.println("Finally block in main");
@@ -22,7 +22,7 @@ class App {
 }
 
 class Util {
-    public static void doWork() throws NaNException // banane NaNException benim isim degil
+    public static void doWork() throws MathException
     {
         try {
             Scanner kb = new Scanner(System.in);
@@ -30,9 +30,6 @@ class Util {
             double result;
             result = MathUtil.log10(a);
             System.out.printf("log10(%f) = %f%n", a, result);
-        }
-        catch (NegativeInfinityException ex) {
-            Console.writeLine("Negative exception:%s", ex.getMessage());
         }
         finally {
             System.out.println("finally block in doWork");
@@ -43,7 +40,7 @@ class Util {
 }
 
 class MathUtil {
-    public static double log10(double a) throws NegativeInfinityException, NaNException // ben firlatiyorum beni cagiran dusunsun
+    public static double log10(double a) throws MathException
     {
         if (a < 0)
             throw new NegativeInfinityException("Value %f can not be negative".formatted(a));
@@ -55,7 +52,7 @@ class MathUtil {
     }
 }
 
-class NegativeInfinityException extends Exception {
+class NegativeInfinityException extends MathException {
     public NegativeInfinityException()
     {
         this(null);
@@ -67,7 +64,7 @@ class NegativeInfinityException extends Exception {
     }
 }
 
-class NaNException extends Exception{
+class NaNException extends MathException {
     public NaNException()
     {
         this(null);
@@ -76,5 +73,18 @@ class NaNException extends Exception{
     public NaNException(String message)
     {
         super(message);
+    }
+}
+
+class  MathException extends Exception {
+
+    public MathException()
+    {
+        this(null);
+    }
+
+    public MathException(String message)
+    {
+       super(message);
     }
 }
