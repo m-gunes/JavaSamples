@@ -11,14 +11,12 @@ class App {
         try {
             Util.doWork();
         }
-        catch (ZeroException ex) {
-            System.out.printf("Zero -> %s%n", ex.getMessage());
-        }
-        catch (NegativeException ex) {
-            System.out.printf("Negative -> %s%n", ex.getMessage());
-        }
         catch (InputMismatchException ignore) {
             System.out.println("Invalid numeric value");
+        }
+        catch (RuntimeException ex)
+        {
+            System.out.println(ex.getMessage());
         }
         finally {
             System.out.println("Finally block in main");
@@ -52,33 +50,60 @@ class MathUtil {
     public static double log10(double a)
     {
         if (a < 0)
-            throw new NegativeException("Value %f can not be negative".formatted(a));
+            throw new NegativeInfinityException("Value %f can not be negative".formatted(a));
 
         if (a == 0)
-            throw new ZeroException("Value can not be zero");
+            throw new NaNException("Value can not be zero");
 
         return Math.log10(a);
     }
 }
 
-class NegativeException extends RuntimeException {
-    public NegativeException()
+class NegativeInfinityException extends MathException {
+    public NegativeInfinityException()
     {
+        this(null);
     }
 
-    public NegativeException(String message)
+    public NegativeInfinityException(String message)
     {
-        super(message);
+        super(message, MathExceptionStatus.NEGATIVE_INFINITY);
     }
 }
 
-class ZeroException extends RuntimeException {
-    public ZeroException()
+class NaNException extends MathException{
+    public NaNException()
     {
+        this(null);
     }
 
-    public ZeroException(String message)
+    public NaNException(String message)
+    {
+        super(message, MathExceptionStatus.NAN);
+    }
+}
+
+class MathException extends RuntimeException {
+    private final MathExceptionStatus m_mathExceptionStatus;
+
+    public MathException(String message, MathExceptionStatus mathExceptionStatus)
     {
         super(message);
+        m_mathExceptionStatus = mathExceptionStatus;
     }
+
+    public String getMessage()
+    {
+        return "Message: %s, Status: %s".formatted(super.getMessage(), m_mathExceptionStatus);
+    }
+
+    public MathExceptionStatus getMathExceptionStatus()
+    {
+        return m_mathExceptionStatus;
+    }
+}
+
+
+enum MathExceptionStatus {
+    NAN, NEGATIVE, ZERO, INFINITY, POSITIVE_INFINITY, NEGATIVE_INFINITY
 }
