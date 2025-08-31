@@ -11,14 +11,14 @@ class App {
         try {
             Util.doWork();
         }
-        catch (ZeroException ignore) {
-            System.out.println("Zero not allowed");
+        catch (ZeroException ex) {
+            System.out.printf("Zero -> %s%n", ex.getMessage());
         }
-        catch (NegativeException ignore) {
-            System.out.println("You can not enter nagative value!");
+        catch (NegativeException ex) {
+            System.out.printf("Negative -> %s%n", ex.getMessage());
         }
         catch (InputMismatchException ignore) {
-            System.out.println("invalid numeric value");
+            System.out.println("Invalid numeric value");
         }
         finally {
             System.out.println("Finally block in main");
@@ -52,23 +52,33 @@ class MathUtil {
     public static double log10(double a)
     {
         if (a < 0)
-            throw new NegativeException();
+            throw new NegativeException("Value %f can not be negative".formatted(a));
 
         if (a == 0)
-            throw new ZeroException();
+            throw new ZeroException("Value can not be zero");
 
         return Math.log10(a);
     }
 }
 
-class NegativeException extends MathException {
+class NegativeException extends RuntimeException {
+    public NegativeException()
+    {
+    }
 
+    public NegativeException(String message)
+    {
+        super(message);
+    }
 }
 
-class ZeroException extends MathException {
+class ZeroException extends RuntimeException {
+    public ZeroException()
+    {
+    }
 
-}
-
-class MathException extends RuntimeException {
-
+    public ZeroException(String message)
+    {
+        super(message);
+    }
 }
