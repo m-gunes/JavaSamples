@@ -16,7 +16,7 @@ class App {
         }
         catch (RuntimeException ex)
         {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         finally {
             System.out.println("Finally block in main");
