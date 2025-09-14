@@ -18,12 +18,8 @@ class Sample {
 }
 
 class E extends A {
-    public void foo() throws MathException {
-        try {
+    public void foo() throws MathException, IOException {
             Sample.doWork();
-        } catch (IOException ex) {
-            throw new WrapperException("io problem occurred", ex);
-        }
     }
 }
 
@@ -43,31 +39,9 @@ class B extends A {
 }
 
 abstract class A {
-    public abstract void foo() throws MathException;
+    public abstract void foo() throws Exception;
 }
 
-class WrapperException extends RuntimeException {
-    public WrapperException()
-    {
-
-    }
-
-    public WrapperException(String message)
-    {
-        this(message, null);
-    }
-
-    public WrapperException(String message, Throwable cause)
-    {
-        super(message, cause);
-    }
-
-    public String getMessage()
-    {
-        Throwable cause = getCause();
-        return "Message: %s%s".formatted(super.getMessage(), cause != null ? "Cause Message: %s".formatted(cause.getMessage()): "");
-    }
-}
 
 class NegativeInfinityException extends MathException {
     public NegativeInfinityException()
