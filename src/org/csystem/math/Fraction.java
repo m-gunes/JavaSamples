@@ -160,65 +160,74 @@ public class Fraction {
 
 package org.csystem.math;
 
-import org.csystem.util.console.Console;
 
 public class Fraction {
     private int m_a; // numerator
     private int m_b; // denominator
 
+    private static void check(int a, int b)
+    {
+        if (b == 0)
+            throw new IllegalArgumentException(a == 0 ? "Indeterminate" : "Undefined");
+    }
+
+    private void setSign() {
+        if (m_b < 0) {
+            m_a = -m_a;
+            m_b = -m_b;
+        }
+    }
+
+    private void simplify()
+    {
+        int min = Math.min(Math.abs(m_a), m_b);
+
+        for (int i = min; i >= 2; --i) {
+            if (m_a % i == 0 && m_b % i == 0) {
+                // i => greatest common divisor. EBOB -> en buyuk ortak bolen
+                m_a /= i;
+                m_b /= i;
+                break;
+            }
+        }
+    }
+
+    private void setFields(int a, int b)
+    {
+        m_a = a;
+        m_b = b;
+    }
+
+    private void set(int a, int b)
+    {
+       if (a == 0) {
+           m_a = 0;
+           m_b = 1;
+           return;
+       }
+       setFields(a, b);
+       setSign();
+       simplify();
+    }
+
+
     public Fraction()
     {
         // 0/1 kesri
-        this(0, 1);
+        this(0);
     }
 
     public Fraction(int a)
     {
         // a / 1 kesri
-        this(a, 1);
+        m_a = a;
+        m_b = 1;
     }
 
     public Fraction(int a, int b)
     {
-        // a/b kesri
-        if (b == 0) {
-            Console.writeLine("Denominator shouldn't be zero");
-            System.exit(0);
-        } else if (a == 0)
-            a = 1;
-
-        simplify(a, b);
-    }
-
-    private void simplify(int a, int b) {
-        int val = 2;
-        int tempA = Math.abs(a);
-        int tempB = Math.abs(b);
-
-        while (val <= tempA || val <= tempB) {
-            if (tempA % val == 0 && tempB % val == 0) {
-                tempA /= val;
-                tempB /= val;
-            } else
-                ++val;
-        }
-
-        m_a = a < 0 ? -tempA : tempA;
-        m_b = b < 0 ? -tempB : tempB;
-        setSign();
-    }
-
-    private void setSign()
-    {
-        if (m_b < 0) {
-            if (m_a < 0) {
-                m_a = Math.abs(m_a);
-                m_b = Math.abs(m_b);
-            } else {
-                m_a = -m_a;
-                m_b = Math.abs(m_b);
-            }
-        }
+        check(a, b);
+        set(a, b);
     }
 
     public int getNumerator()
@@ -228,7 +237,7 @@ public class Fraction {
 
     public void setNumerator(int val)
     {
-        m_a = val;
+        set(val, m_b);
     }
 
     public int getDenominator()
@@ -238,7 +247,8 @@ public class Fraction {
 
     public void setDenominator(int val)
     {
-        m_b = val;
+        check(m_a, val);
+        set(m_a, val);
     }
 
     public double getRealValue()
@@ -252,7 +262,12 @@ public class Fraction {
         int b1 = other.getDenominator();
         int a2 = this.getNumerator();
         int b2 = this.getDenominator();
-        return new Fraction(a1 + a2, b1 + b2);
+
+        if (b1 == b2)
+            return new Fraction(a1 + a2, b1);
+
+
+        throw new UnsupportedOperationException("Todo");
     }
 
     public Fraction add(int val)
@@ -313,6 +328,6 @@ public class Fraction {
 
     public String toString()
     {
-        throw new UnsupportedOperationException("TODO:");
+        return "%d%s".formatted(m_a, m_b != 1 ? " / %d = %.6f".formatted(m_b, getRealValue()) : "");
     }
 }
