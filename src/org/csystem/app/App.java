@@ -2,37 +2,80 @@ package org.csystem.app;
 
 import org.csystem.util.console.Console;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 class App {
     public static void main(String[] args)
     {
-        Sample s1 = new Sample(3);
-        Console.writeLine("-----------------");
     }
 }
 
 class Sample {
+    public static void doWork() throws IOException {
+        //..
+    }
+}
 
-   {
-        Console.writeLine("Non-Static initializer 1");
-   }
+class E extends A {
+    public void foo() throws MathException, IOException {
+            Sample.doWork();
+    }
+}
 
-   public Sample()
-   {
-       Console.writeLine("I'm a default Ctor");
-   }
+class D extends A {
+    public void foo() throws MathException {
+    }
+}
+class C extends A {
+    public void foo() throws NegativeInfinityException, NaNException {
+    }
+}
 
-    public Sample(int a)
+class B extends A {
+    public void foo() {
+        //..
+    }
+}
+
+abstract class A {
+    public abstract void foo() throws Exception;
+}
+
+
+class NegativeInfinityException extends MathException {
+    public NegativeInfinityException()
     {
-        this();
-        Console.writeLine("I'm a Ctor with parameter int");
+        this(null);
     }
 
+    public NegativeInfinityException(String message)
     {
-        Console.writeLine("Non-Static initializer 2");
+        super(message);
+    }
+}
+
+class NaNException extends MathException {
+    public NaNException()
+    {
+        this(null);
     }
 
+    public NaNException(String message)
     {
-        Console.writeLine("Non-Static initializer 3");
+        super(message);
+    }
+}
+
+class  MathException extends Exception {
+
+    public MathException()
+    {
+        this(null);
     }
 
+    public MathException(String message)
+    {
+       super(message);
+    }
 }
