@@ -7,22 +7,29 @@ class App {
     }
 }
 
-interface Ix {
-    int A = 10;
+
+//class A implements IX { // error
+//}
+
+abstract class B implements IX {
+
+}
+
+abstract class C implements IX, IY {
+    public void foo()
+    {
+    }
+
+    public void bar()
+    {
+    }
+}
+
+interface IX {
     void foo();
-    default void bar(int a)
-    {
-    }
+}
 
-    static void tar(int a, double b)
-    {
-    }
-
-    private void car()
-    {
-    }
-
-    private static void zar()
-    {
-    }
+interface IY {
+    void bar();
+    void tar();
 }
