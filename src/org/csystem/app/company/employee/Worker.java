@@ -1,4 +1,4 @@
-package org.csystem.app.company;
+package org.csystem.app.company.employee;
 
 public class Worker extends Employee {
     private double m_feePerHour;

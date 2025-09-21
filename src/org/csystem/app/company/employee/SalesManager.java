@@ -1,4 +1,4 @@
-package org.csystem.app.company;
+package org.csystem.app.company.employee;
 
 public class SalesManager extends Manager {
     private double m_saleExtra;
@@ -17,5 +17,10 @@ public class SalesManager extends Manager {
     public void setSaleExtra(double saleExtra)
     {
         m_saleExtra = saleExtra;
+    }
+
+    public double calculateInsurancePayment()
+    {
+        return super.calculateInsurancePayment() + m_saleExtra;
     }
 }

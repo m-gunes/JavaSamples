@@ -1,5 +1,7 @@
 package org.csystem.app.company;
 
+import org.csystem.app.company.employee.*;
+import org.csystem.app.company.hr.HumanResources;
 import org.csystem.util.thread.ThreadUtil;
 
 import java.util.Random;
