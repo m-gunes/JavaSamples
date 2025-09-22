@@ -2,7 +2,7 @@ package org.csystem.string;
 
 import java.util.Arrays;
 
-public class CSDStringBuilder {
+public class CSDStringBuilder implements CharSequence {
 
     private static final int DEFAULT_CAPACITY_IF_CURRENT_ZERO = 1;
     private static final int CAPACITY_INCREMENT_FACTOR = 2;
@@ -155,6 +155,11 @@ public class CSDStringBuilder {
         m_index += str.length;
 
         return this;
+    }
+
+    public CharSequence subSequence(int start, int end)
+    {
+        return String.valueOf(m_chars, start, end - start); // ankara
     }
 
     public int length()
