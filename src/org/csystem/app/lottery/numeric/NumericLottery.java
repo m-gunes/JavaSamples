@@ -1,7 +1,7 @@
 package org.csystem.app.lottery.numeric;
 
 import java.util.Arrays;
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 /*----------------------------------------------------------------------------------------------------------------
 Sınıf Çalışması: Sayısal loto kupon üreten programı yazınız.
@@ -10,10 +10,10 @@ Açıklama: Bir sayısal loto kuponu birbirinden farklı 6 tane küçükten büy
 Anahtar Notlar: Arrays sınıfının sort metodu parametresi ile aldığı diziyi (ascending) artan şekilde sıralar
 ----------------------------------------------------------------------------------------------------------------*/
 public class NumericLottery {
-    private final Random random;
-    public NumericLottery(Random r)
+    private final RandomGenerator m_randomGenerator;
+    public NumericLottery(RandomGenerator randomGenerator)
     {
-        random = r;
+        m_randomGenerator = randomGenerator;
     }
 
     public boolean [] getFlags()
@@ -22,7 +22,7 @@ public class NumericLottery {
         for(int i = 0; i < 6; ++i) {
             int val;
             do
-                val = random.nextInt(1, 50);
+                val = m_randomGenerator.nextInt(1, 50);
             while (flags[val]);
 
             flags[val] = true;
@@ -56,7 +56,7 @@ public class NumericLottery {
         for(int i = 0; i < a.length; ++i) {
             int val;
             do
-               val = random.nextInt(1, 50);
+               val = m_randomGenerator.nextInt(1, 50);
             while (flags[val]);
 
             flags[val] = true;
@@ -76,7 +76,7 @@ public class NumericLottery {
             boolean repeat;
             do {
                 repeat = false;
-                a[i] = random.nextInt(1, 50);
+                a[i] = m_randomGenerator.nextInt(1, 50);
 
                 if(!flags[a[i]])
                     flags[a[i]] = true;
@@ -99,7 +99,7 @@ public class NumericLottery {
             boolean repeat;
             do {
                 repeat = false;
-                a[i] = random.nextInt(1, 50);
+                a[i] = m_randomGenerator.nextInt(1, 50);
                 for(int k = 0; k < i; ++k) {
                     if(a[k] == a[i]){
                        repeat = true;

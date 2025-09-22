@@ -1,7 +1,7 @@
 package org.csystem.util.string;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public final class StringUtil {
     private StringUtil()
@@ -54,43 +54,43 @@ public final class StringUtil {
     }
 
 
-    public static String generateRandomText(Random r, int count, CharSequence charSequence)
+    public static String generateRandomText(RandomGenerator randomGenerator, int count, CharSequence charSequence)
     {
         char[] c = new char[count];
 
         for (int i = 0; i < count; ++i)
-            c[i] = charSequence.charAt(r.nextInt(charSequence.length()));
+            c[i] = charSequence.charAt(randomGenerator.nextInt(charSequence.length()));
 
         return String.valueOf(c);
     }
 
-    public static String generateRandomTextEN(Random r, int count)
+    public static String generateRandomTextEN(RandomGenerator randomGenerator, int count)
     {
-        return generateRandomText(r, count, ALL_LETTERS_EN);
+        return generateRandomText(randomGenerator, count, ALL_LETTERS_EN);
     }
 
-    public static String generateRandomTextTR(Random r, int count)
+    public static String generateRandomTextTR(RandomGenerator randomGenerator, int count)
     {
-        return generateRandomText(r, count, ALL_LETTERS_TR);
+        return generateRandomText(randomGenerator, count, ALL_LETTERS_TR);
     }
 
-    public static String[] generateRandomTexts(Random r, int count, int origin, int bound, CharSequence charSequence)
+    public static String[] generateRandomTexts(RandomGenerator randomGenerator, int count, int origin, int bound, CharSequence charSequence)
     {
         String[] s = new String[count];
         for (int i = 0; i < count; ++i)
-            s[i] = generateRandomText(r, r.nextInt(origin, bound), charSequence);
+            s[i] = generateRandomText(randomGenerator, randomGenerator.nextInt(origin, bound), charSequence);
 
         return s;
     }
 
-    public static String[] generateRandomTextsEN(Random r, int count, int origin, int bound)
+    public static String[] generateRandomTextsEN(RandomGenerator randomGenerator, int count, int origin, int bound)
     {
-        return generateRandomTexts(r, count, origin, bound, ALL_LETTERS_EN);
+        return generateRandomTexts(randomGenerator, count, origin, bound, ALL_LETTERS_EN);
     }
 
-    public static String[] generateRandomTextsTR(Random r, int count, int origin, int bound)
+    public static String[] generateRandomTextsTR(RandomGenerator randomGenerator, int count, int origin, int bound)
     {
-        return generateRandomTexts(r, count, origin, bound, ALL_LETTERS_TR);
+        return generateRandomTexts(randomGenerator, count, origin, bound, ALL_LETTERS_TR);
     }
 
 

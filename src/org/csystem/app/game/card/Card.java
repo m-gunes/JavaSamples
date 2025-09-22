@@ -1,6 +1,7 @@
 package org.csystem.app.game.card;
 
-import java.util.Random;
+
+import java.util.random.RandomGenerator;
 
 public class Card {
     private static final int CARD_COUNT_OF_DECK = 52;
@@ -27,17 +28,17 @@ public class Card {
         cards[k] = temp;
     }
 
-    public static Card [] newShuffledDeck(Random random)
+    public static Card [] newShuffledDeck(RandomGenerator randomGenerator)
     {
-        return newShuffledDeck(random, DEFAULT_SHUFFLE_COUNT);
+        return newShuffledDeck(randomGenerator, DEFAULT_SHUFFLE_COUNT);
     }
 
-    public static Card [] newShuffledDeck(Random random, int count)
+    public static Card [] newShuffledDeck(RandomGenerator randomGenerator, int count)
     {
         Card [] deck = newDeck();
 
         for (int i = 0; i < count; ++i) {
-            swap(deck, random.nextInt(deck.length), random.nextInt(deck.length));
+            swap(deck, randomGenerator.nextInt(deck.length), randomGenerator.nextInt(deck.length));
         }
 
         return deck;

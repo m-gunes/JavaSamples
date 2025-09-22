@@ -2,7 +2,8 @@ package org.csystem.util.matrix;
 
 import org.csystem.util.array.ArrayUtil;
 
-import java.util.Random;
+import java.util.random.RandomGenerator;
+
 
 public final class MatrixUtil {
     private MatrixUtil()
@@ -79,20 +80,20 @@ public final class MatrixUtil {
                 a[i][j] *= value;
     }
 
-    public static int [][] generateRandomMatrix(Random random, int m, int n, int origin, int bound)
+    public static int [][] generateRandomMatrix(RandomGenerator randomGenerator, int m, int n, int origin, int bound)
     {
         int [][] a = new int[m][];
 
         for(int i = 0; i < m; ++i) {
-            a[i] = ArrayUtil.generateRandomArray(random, n, origin, bound);
+            a[i] = ArrayUtil.generateRandomArray(randomGenerator, n, origin, bound);
         }
 
         return a;
     }
 
-    public static int [][] generateRandomSquareMatrix(Random random, int n, int origin, int bound)
+    public static int [][] generateRandomSquareMatrix(RandomGenerator randomGenerator, int n, int origin, int bound)
     {
-        return generateRandomMatrix(random, n, n, origin, bound);
+        return generateRandomMatrix(randomGenerator, n, n, origin, bound);
     }
 
     public static boolean isMatrix(int [][] a)
