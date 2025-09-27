@@ -19,23 +19,12 @@ class Demo {
         String username = Console.readString("Input username:");
         String password = Console.readString("Input password:");
 
-        DatabaseConnection connection = null;
-        try {
-            connection = new DatabaseConnection(url, username, password);
+        try(DatabaseConnection connection = new DatabaseConnection(url, username, password)) {
             String sqlStr = Console.readString("Input sql command:");
             connection.insert(sqlStr);
         }
         catch (IOException ex) {
             Console.writeLine("Error occurred:%s", ex.getMessage());
-        }
-        finally {
-            if (connection != null)
-                try {
-                    connection.close();
-                }
-                catch (IOException ignore) {
-
-                }
         }
 
         Console.writeLine("C and System programmers association");
