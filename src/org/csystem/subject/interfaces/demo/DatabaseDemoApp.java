@@ -19,15 +19,28 @@ class Demo {
         String username = Console.readString("Input username:");
         String password = Console.readString("Input password:");
 
-        try(DatabaseConnection connection = new DatabaseConnection(url, username, password)) {
-            String sqlStr = Console.readString("Input sql command:");
-            connection.insert(sqlStr);
+        try {
+            DatabaseConnection connection = new DatabaseConnection(url, username, password);
+            DatabaseConnectionUtil.insert(connection);
         }
         catch (IOException ex) {
             Console.writeLine("Error occurred:%s", ex.getMessage());
         }
 
         Console.writeLine("C and System programmers association");
+    }
+}
+
+class DatabaseConnectionUtil {
+    public static void insert(DatabaseConnection connection)
+    {
+        try(connection) { // since java 9
+            String sqlStr = Console.readString("Input sql command:");
+            connection.insert(sqlStr);
+        }
+        catch (IOException ex) {
+            Console.writeLine("Error occurred while insert:%s", ex.getMessage());
+        }
     }
 }
 
