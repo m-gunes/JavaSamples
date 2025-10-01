@@ -113,7 +113,22 @@ public class CSDStringBuilder implements CharSequence {
 
     public int indexOf(String str, int fromIndex)
     {
-        return String.valueOf(m_chars).indexOf(str, fromIndex); // Todo: Check
+        // bugun have cok guzel
+        // lookup: cok
+        // 0 -> bug == cok
+        // 1 -> ugu == cok
+        // 2 -> gun == cok
+        //..
+        // Todo: Check - this is not correct. Don't use string
+        String charString = new String(m_chars);
+        for (int i = fromIndex; i <= charString.length() - str.length(); ++i) {
+            String s = charString.substring(i, i + str.length());
+            if (s.equals(str))
+                return i;
+        }
+
+        return -1;
+//        return String.valueOf(m_chars).indexOf(str, fromIndex); // Todo: Check
     }
 
     public CSDStringBuilder insert(int index, String str)
