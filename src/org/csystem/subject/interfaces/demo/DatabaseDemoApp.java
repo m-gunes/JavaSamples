@@ -18,10 +18,11 @@ class Demo {
         String url = Console.readString("Input url:");
         String username = Console.readString("Input username:");
         String password = Console.readString("Input password:");
+        String sqlStr = Console.readString("Input sql command:");
 
-        try {
-            DatabaseConnection connection = new DatabaseConnection(url, username, password);
-            DatabaseConnectionUtil.insert(connection);
+        try(Statement statement = new Statement(sqlStr); DatabaseConnection connection = new DatabaseConnection(url, username, password, statement)) {
+
+            connection.insert();
         }
         catch (IOException ex) {
             Console.writeLine("Error occurred:%s", ex.getMessage());
@@ -31,49 +32,60 @@ class Demo {
     }
 }
 
-class DatabaseConnectionUtil {
-    public static void insert(DatabaseConnection connection)
+class Statement implements Closeable {
+    private final String m_sqlCmd;
+
+    public Statement(String sqlCmd) throws IOException
     {
-        try(connection) { // since java 9
-            String sqlStr = Console.readString("Input sql command:");
-            connection.insert(sqlStr);
-        }
-        catch (IOException ex) {
-            Console.writeLine("Error occurred while insert:%s", ex.getMessage());
-        }
+        Console.writeLine("Prepare statement");
+
+        if (sqlCmd == null || sqlCmd.isBlank())
+            throw new IOException("sqlCmd can not be null");
+
+        m_sqlCmd = sqlCmd;
+    }
+
+    public String getSqlCmd()
+    {
+        return m_sqlCmd;
+    }
+
+    public void close() throws IOException
+    {
+        Console.writeLine("Close statement");
     }
 }
+
 
 class DatabaseConnection implements Closeable {
     private String m_url;
     private String m_username;
     private String m_password;
+    private Statement m_statement;
 
-    private void checkInformation(String url, String username, String password) throws IOException
+    private void checkInformation(String url, String username, String password, Statement statement) throws IOException
     {
-        if (url == null || url.isBlank() || username == null || username.isBlank() && password == null)
+        if (url == null || url.isBlank() || username == null || username.isBlank() || password == null || statement == null)
             throw new IOException("Illegal connection parameters");
     }
 
-    public DatabaseConnection(String url, String username, String password) throws IOException
+    public DatabaseConnection(String url, String username, String password, Statement statement) throws IOException
     {
-        checkInformation(url, username, password);
+        checkInformation(url, username, password, statement);
         m_url = url;
         m_username = username;
         m_password = password;
+        m_statement = statement;
         Console.writeLine("Connection to '%s' succeed with user:%s", url, username);
     }
 
-    public void insert(String sqlStr) throws IOException
+    public void insert() throws IOException
     {
-        if (sqlStr == null || sqlStr.isBlank())
-            throw new IOException("sqlStr can not be null");
-
-        Console.writeLine("'%s' sent to %s", sqlStr, m_url);
+        Console.writeLine("'%s' sent to %s", m_statement.getSqlCmd(), m_url);
     }
 
     public void close() throws IOException
     {
-        Console.writeLine("Close connection");
+        Console.writeLine("Close database connection");
     }
 }
