@@ -13,6 +13,8 @@ public class App {
         Console.writeLine("%s %s", as.getK(), as.getT());
         Console.writeLine("%d %s", ai.getT(), ai.getK());
         Console.writeLine("%f", bd.getT());
+        Console.writeLine(as.getClass().getName());
+        Console.writeLine(ai.getClass().getName());
 
         // raw use
         A asr;

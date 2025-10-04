@@ -151,7 +151,7 @@ public final class StringUtil {
         return isPangram(s.toLowerCase(), LETTERS_TR);
     }
 
-    public static String join(ArrayList texts, CharSequence delimiter)
+    public static String join(ArrayList<String> texts, CharSequence delimiter)
     {
         StringBuilder sb = new StringBuilder();
         for (Object o: texts) {
@@ -162,7 +162,7 @@ public final class StringUtil {
         return sb.substring(0, sb.length() - delimiter.length());
     }
 
-    public static String join(ArrayList texts, char delimiter)
+    public static String join(ArrayList<String> texts, char delimiter)
     {
         return join(texts, String.valueOf(delimiter));
     }
