@@ -154,10 +154,8 @@ public final class StringUtil {
     public static String join(ArrayList<String> texts, CharSequence delimiter)
     {
         StringBuilder sb = new StringBuilder();
-        for (Object o: texts) {
-            String s = (String) o;
-            sb.append(o).append(delimiter);
-        }
+        for (String s: texts)
+            sb.append(s).append(delimiter);
 
         return sb.substring(0, sb.length() - delimiter.length());
     }
