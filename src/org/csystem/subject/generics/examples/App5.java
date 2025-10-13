@@ -26,7 +26,7 @@ public class App5 {
 
         int length = Console.readInt("Input length:");
 
-        Arrays.stream(a).filter(v -> v > length).forEach(v -> Console.write("%d ", v);
+        Arrays.stream(a).filter(v -> v > length).forEach(v -> Console.write("%d ", v));
         Console.writeLine();
     }
 
