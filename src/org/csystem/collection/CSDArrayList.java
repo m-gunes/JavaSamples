@@ -11,15 +11,30 @@ package org.csystem.collection;
  */
 
 public class CSDArrayList<E> {
+    private static final int DEFAULT_CAPACITY = 10;
+    private E [] m_elements;
+    private int m_index;
+
+    private void IllegalArgumentException(String message)
+    {
+        throw new IllegalArgumentException(message);
+    }
+
+    private void checkCapacity(int capacity)
+    {
+        if (capacity < 0)
+            IllegalArgumentException(String.format("Capacity must be non-negative:%d", capacity));
+    }
 
     public CSDArrayList()
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        m_elements = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
     public CSDArrayList(int initialCapacity)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        checkCapacity(initialCapacity);
+        m_elements = (E[]) new Object[initialCapacity];
     }
 
     public boolean add(E element)
