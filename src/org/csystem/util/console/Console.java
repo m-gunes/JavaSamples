@@ -109,4 +109,8 @@ public class Console {
         System.out.println(object);
     }
 
+    public static void writeErrLine(String s, String message)
+    {
+
+    }
 }

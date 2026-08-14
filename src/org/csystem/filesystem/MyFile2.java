@@ -5,7 +5,7 @@ import org.csystem.util.console.Console;
 
 import java.io.File;
 
-public class MyFile {
+public class MyFile2 {
     public static void run(String [] args)
     {
         CommandLineArgsUtil.checkLengthEquals(1, args.length, "Wrong number of argument");

@@ -3,7 +3,7 @@ package org.csystem.filesystem;
 import org.csystem.util.console.CommandLineArgsUtil;
 import org.csystem.util.console.Console;
 
-public class SystemProperties {
+public class SystemProperties1 {
     public static void run(String [] args)
     {
         CommandLineArgsUtil.checkLengthEquals(1, args.length, "Wrong number of argument");

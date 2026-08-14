@@ -5,7 +5,7 @@ import org.csystem.util.console.Console;
 
 import java.io.File;
 
-public class MyFiles {
+public class MyFiles4 {
     public static void run(String[] args)
     {
         mkdirs(args);

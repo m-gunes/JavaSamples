@@ -5,7 +5,7 @@ import org.csystem.util.console.Console;
 
 import java.io.File;
 
-public class MyPath {
+public class MyPath3 {
 
     public static void run(String [] args)
     {
