@@ -22,10 +22,11 @@ public class BackupViaPrompt implements IPredicate<Path> {
     @Override
     public boolean test(Path path) throws IOException
     {
-        char option = getOption();
+        Path bakPath = Path.of("%s-bak".formatted(path.toString()));
+        char option;
 
-        if (option == 'y' || option == 'Y')
-            Files.copy(path, Path.of("%s-bak".formatted(path.toString())), StandardCopyOption.REPLACE_EXISTING);
+        if (Files.notExists(bakPath) || (option = getOption()) == 'y' || option == 'Y')
+            Files.copy(path, bakPath, StandardCopyOption.REPLACE_EXISTING);
 
         return true;
     }
