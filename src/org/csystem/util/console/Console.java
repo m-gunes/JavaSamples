@@ -110,14 +110,14 @@ public class Console {
         }
     }
 
-    public static void write(String fmt, Object...objects)
+    public static void write(Object o)
     {
-        System.out.printf(fmt, objects);
+        System.out.print(o);
     }
 
-    public static void writeLine(String fmt, Object...objects)
+    public static void write(String format, Object...args)
     {
-        write(fmt + '\n', objects);
+        System.out.printf(format, args);
     }
 
     public static void writeLine()
@@ -125,18 +125,39 @@ public class Console {
         System.out.println();
     }
 
-    public static void write(Object object)
+    public static void writeLine(Object o)
     {
-        System.out.print(object);
+        System.out.println(o);
     }
 
-    public static void writeLine(Object object)
+    public static void writeLine(String format, Object...args)
     {
-        System.out.println(object);
+        write(format + "%n", args);
     }
 
-    public static void writeErrLine(String s, String message)
+    public static void writeErr(Object o)
     {
-
+        System.err.print(o);
     }
+
+    public static void writeErr(String format, Object...args)
+    {
+        System.err.printf(format, args);
+    }
+
+    public static void writeErrLine()
+    {
+        System.err.println();
+    }
+
+    public static void writeErrLine(Object o)
+    {
+        System.err.println(o);
+    }
+
+    public static void writeErrLine(String format, Object...args)
+    {
+        writeErr(format + "%n", args);
+    }
+
 }
